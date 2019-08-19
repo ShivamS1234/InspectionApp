@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{4D3A07CF-04EF-48A1-A75C-C05E9AE4D638}|Default">
+  <MonoDevelop.Ide.ItemProperties.InspectionApp.Android AndroidDesignerPreferredTheme="Theme.DeviceDefault.Light.NoActionBar.Fullscreen" PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="InspectionApp/View/LoginPage.xaml">
+    <Files>
+      <File FileName="InspectionApp/ViewModel/LoginPageViewModel.cs" Line="110" Column="20" />
+      <File FileName="InspectionApp/App.xaml.cs" Line="48" Column="6" />
+      <File FileName="InspectionApp/View/LoginPage.xaml" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="InspectionApp" expanded="True">
+            <Node name="InspectionApp" expanded="True">
+              <Node name="View" expanded="True">
+                <Node name="LoginPage.xaml" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

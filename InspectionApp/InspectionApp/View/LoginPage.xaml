@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+               xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:localBehavior="clr-namespace:Behavior"
+             x:Class="InspectionApp.View.LoginPage">
+  <ContentPage.Resources>
+       <ResourceDictionary>  
+      <Style x:Key="LabelStyle" TargetType="Label">  
+          <Setter Property="TextColor" Value="Black"/>  
+          <Setter Property="FontSize" Value="14"/>  
+      </Style>  
+          <Style x:Key="ButtonStyle" TargetType="Button">  
+          <Setter Property="TextColor" Value="White"/>  
+        <Setter Property="BackgroundColor" Value="#183A7A" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="20" />
+      </Style>
+     <Color x:Key="primaryColor">#183A7A</Color>
+      </ResourceDictionary> 
+  </ContentPage.Resources>
+    <ContentPage.Content>
+    <StackLayout BackgroundColor="Transparent" Visual="Material" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Grid x:Name="Login_grid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions >
+                <StackLayout Grid.Column="0" Grid.Row="0" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,10,0,0">
+                    <Image Source="inspectionLogo.png" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="250" />
+                </StackLayout>
+                <StackLayout BackgroundColor="White" Margin="20,15,20,15" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Grid.Column="0" Grid.Row="1">
+                    <Entry x:Name="Email1" Visual="Material" Text="{Binding UserId}" Placeholder="Email ID" TextColor="{Binding EmailColor,Mode=TwoWay}"  HorizontalOptions="FillAndExpand">
+                         <Entry.Behaviors>
+                            <localBehavior:EmailValidatorBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions >
+                        <Entry Visual="Material" IsPassword="True" x:Name="Password" Text="{Binding Password}" TextColor="Black" Placeholder="Password" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Image  Source="passimg.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" Margin="0,0,0,5" VerticalOptions="Center" Grid.Column="1" >
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </Grid>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Padding="5,15,15,15">
+                        <Label Visual="Material" Text="Keep me Logged In"   HorizontalOptions="Start" Style="{StaticResource LabelStyle}"/>
+                        <Switch Visual="Material" OnColor="#183A7A" HorizontalOptions="End" IsToggled="{Binding IsSwitchedToggled, Mode=TwoWay}" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HeightRequest="20" HorizontalOptions="FillAndExpand">
+                        <Label Visual="Material" x:Name="ForgotPassword" Text="  Forgot Password" Style="{StaticResource LabelStyle}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                Command="{Binding ForgetCommand}"
+                NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <Button  Visual="Material" Text="Login" Command="{Binding LoginCommand}"  HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" />
+          <BoxView BackgroundColor="{StaticResource primaryColor}" HeightRequest="3" />
+          <Button Visual="Material"  Text="Create Account" Command="{Binding RegisterCommand}"  HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" />
+                </StackLayout>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
