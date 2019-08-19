@@ -39,7 +39,7 @@ namespace InspectionApp
       try
       {
         IsActiveApp = true;
-        await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+        await NavigationService.NavigateAsync("NavigationPage/SplashPage");
       }
       catch (Exception ex)
       {
@@ -67,6 +67,7 @@ namespace InspectionApp
     {
       containerRegistry.RegisterForNavigation<NavigationPage>();
       containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+      containerRegistry.RegisterForNavigation<SplashPage, LoginPageViewModel>();
     }
   }
 }

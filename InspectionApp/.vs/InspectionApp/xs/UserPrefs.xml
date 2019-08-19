@@ -1,19 +1,24 @@
 ﻿<Properties StartupConfiguration="{4D3A07CF-04EF-48A1-A75C-C05E9AE4D638}|Default">
-  <MonoDevelop.Ide.ItemProperties.InspectionApp.Android AndroidDesignerPreferredTheme="Theme.DeviceDefault.Light.NoActionBar.Fullscreen" PreferredExecutionTarget="Android.Android_Accelerated_Oreo" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="InspectionApp/View/LoginPage.xaml">
+  <MonoDevelop.Ide.ItemProperties.InspectionApp.Android AndroidDesignerPreferredTheme="Theme.DeviceDefault.Light.NoActionBar.Fullscreen" PreferredExecutionTarget="Android.192.168.57.101:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="InspectionApp/App.xaml.cs">
     <Files>
       <File FileName="InspectionApp/ViewModel/LoginPageViewModel.cs" Line="110" Column="20" />
-      <File FileName="InspectionApp/App.xaml.cs" Line="48" Column="6" />
+      <File FileName="InspectionApp/App.xaml.cs" Line="50" Column="6" />
       <File FileName="InspectionApp/View/LoginPage.xaml" />
+      <File FileName="InspectionApp.Android/MainActivity.cs" Line="21" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
+          <Option id="ShowAllFiles" value="True" />
           <Node name="InspectionApp" expanded="True">
             <Node name="InspectionApp" expanded="True">
-              <Node name="View" expanded="True">
-                <Node name="LoginPage.xaml" selected="True" />
-              </Node>
+              <Node name="Dependencies" expanded="True" />
+              <Node name="View" expanded="True" />
+              <Node name="App.xaml.cs" selected="True" />
+            </Node>
+            <Node name="InspectionApp.Android" expanded="True">
+              <Node name="Assets" expanded="True" />
             </Node>
           </Node>
         </State>
