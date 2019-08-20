@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using Lottie.Forms;
 using Xamarin.Forms;
 
 namespace InspectionApp.View

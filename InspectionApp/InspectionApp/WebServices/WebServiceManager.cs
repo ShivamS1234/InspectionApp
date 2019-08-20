@@ -24,7 +24,7 @@ namespace InspectionApp.WebServices
       byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(companiesRequestDTO));
       string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
 
-      var result = await webService.PostAsync<CompaniesResponseDTO>("Company/GetCompaniesbyAppId", utfString);
+      var result = await webService.GetAsync<CompaniesResponseDTO>("Company/GetAllCompanies", utfString);
       return result;
     }
     public async Task<WebServiceResult<UsersResponseDTO>> RegistrationAsync(UsersRequestDTO companiesRequestDTO)

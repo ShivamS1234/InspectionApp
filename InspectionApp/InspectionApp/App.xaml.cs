@@ -18,12 +18,7 @@ namespace InspectionApp
   {
     public static double ScreenHeight;
     public static double ScreenWidth;
-    private const int defaultTimespan = 1;
-    private static Boolean AppStart = false;
-    WebServiceManager webServiceManager = new WebServiceManager();
     public static bool IsInDevelopment = false;
-    int UserID = 0;
-    int CpmID = 0;
     #region Notification
     public static bool IsActiveNotification { get; set; }
     public static bool IsActiveApp { get; set; }
@@ -39,7 +34,7 @@ namespace InspectionApp
       try
       {
         IsActiveApp = true;
-        await NavigationService.NavigateAsync("NavigationPage/SplashPage");
+        await NavigationService.NavigateAsync("SplashPage");
       }
       catch (Exception ex)
       {
@@ -66,8 +61,9 @@ namespace InspectionApp
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
       containerRegistry.RegisterForNavigation<NavigationPage>();
+      containerRegistry.RegisterForNavigation<SplashPage, SplashViewModel>();
       containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
-      containerRegistry.RegisterForNavigation<SplashPage, LoginPageViewModel>();
+      containerRegistry.RegisterForNavigation<RegistrationPage, RegistrationViewModel>();
     }
   }
 }

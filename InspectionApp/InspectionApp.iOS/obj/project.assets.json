@@ -2,13 +2,10 @@
   "version": 3,
   "targets": {
     "Xamarin.iOS,Version=v1.0": {
-      "Acr.UserDialogs/7.0.4": {
+      "Acr.UserDialogs/7.0.22": {
         "type": "package",
-        "dependencies": {
-          "BTProgressHUD": "1.2.0.6"
-        },
         "frameworkAssemblies": [
-          "OpenTK-1.0"
+          "System.Drawing.Common.dll"
         ],
         "compile": {
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
@@ -17,35 +14,27 @@
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
         }
       },
-      "BTProgressHUD/1.2.0.6": {
+      "Com.Airbnb.iOS.Lottie/1.5.1.1": {
         "type": "package",
         "compile": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         }
       },
-      "Com.Airbnb.iOS.Lottie/2.5.8": {
-        "type": "package",
-        "compile": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        }
-      },
-      "Com.Airbnb.Xamarin.Forms.Lottie/3.0.0": {
+      "Com.Airbnb.Xamarin.Forms.Lottie/1.5.2.1": {
         "type": "package",
         "dependencies": {
-          "Com.Airbnb.iOS.Lottie": "2.5.8",
-          "Xamarin.Forms": "3.6.0.539721"
+          "Com.Airbnb.iOS.Lottie": "1.5.1.1"
         },
         "compile": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         },
         "runtime": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         }
       },
       "DryIoc.dll/4.0.4": {
@@ -286,13 +275,14 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Acr.UserDialogs": "7.0.4",
-          "Com.Airbnb.Xamarin.Forms.Lottie": "3.0.0",
+          "Com.Airbnb.Xamarin.Forms.Lottie": "1.5.2.1",
           "Newtonsoft.Json": "12.0.2",
           "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
           "Prism.Forms": "7.2.0.1367",
           "Xamarin.Essentials": "1.1.0",
-          "Xamarin.Forms": "4.0.0.425677"
+          "Xamarin.Forms": "4.1.0.673156",
+          "Xamarin.Forms.Visual.Material": "4.1.0.673156"
         },
         "compile": {
           "bin/placeholder/InspectionApp.dll": {}
@@ -303,13 +293,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
-      "Acr.UserDialogs/7.0.4": {
+      "Acr.UserDialogs/7.0.22": {
         "type": "package",
-        "dependencies": {
-          "BTProgressHUD": "1.2.0.6"
-        },
         "frameworkAssemblies": [
-          "OpenTK-1.0"
+          "System.Drawing.Common.dll"
         ],
         "compile": {
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
@@ -318,35 +305,27 @@
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
         }
       },
-      "BTProgressHUD/1.2.0.6": {
+      "Com.Airbnb.iOS.Lottie/1.5.1.1": {
         "type": "package",
         "compile": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         }
       },
-      "Com.Airbnb.iOS.Lottie/2.5.8": {
-        "type": "package",
-        "compile": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        }
-      },
-      "Com.Airbnb.Xamarin.Forms.Lottie/3.0.0": {
+      "Com.Airbnb.Xamarin.Forms.Lottie/1.5.2.1": {
         "type": "package",
         "dependencies": {
-          "Com.Airbnb.iOS.Lottie": "2.5.8",
-          "Xamarin.Forms": "3.6.0.539721"
+          "Com.Airbnb.iOS.Lottie": "1.5.1.1"
         },
         "compile": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         },
         "runtime": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         }
       },
       "DryIoc.dll/4.0.4": {
@@ -587,13 +566,14 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Acr.UserDialogs": "7.0.4",
-          "Com.Airbnb.Xamarin.Forms.Lottie": "3.0.0",
+          "Com.Airbnb.Xamarin.Forms.Lottie": "1.5.2.1",
           "Newtonsoft.Json": "12.0.2",
           "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
           "Prism.Forms": "7.2.0.1367",
           "Xamarin.Essentials": "1.1.0",
-          "Xamarin.Forms": "4.0.0.425677"
+          "Xamarin.Forms": "4.1.0.673156",
+          "Xamarin.Forms.Visual.Material": "4.1.0.673156"
         },
         "compile": {
           "bin/placeholder/InspectionApp.dll": {}
@@ -604,13 +584,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
-      "Acr.UserDialogs/7.0.4": {
+      "Acr.UserDialogs/7.0.22": {
         "type": "package",
-        "dependencies": {
-          "BTProgressHUD": "1.2.0.6"
-        },
         "frameworkAssemblies": [
-          "OpenTK-1.0"
+          "System.Drawing.Common.dll"
         ],
         "compile": {
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
@@ -619,35 +596,27 @@
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
         }
       },
-      "BTProgressHUD/1.2.0.6": {
+      "Com.Airbnb.iOS.Lottie/1.5.1.1": {
         "type": "package",
         "compile": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         }
       },
-      "Com.Airbnb.iOS.Lottie/2.5.8": {
-        "type": "package",
-        "compile": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        }
-      },
-      "Com.Airbnb.Xamarin.Forms.Lottie/3.0.0": {
+      "Com.Airbnb.Xamarin.Forms.Lottie/1.5.2.1": {
         "type": "package",
         "dependencies": {
-          "Com.Airbnb.iOS.Lottie": "2.5.8",
-          "Xamarin.Forms": "3.6.0.539721"
+          "Com.Airbnb.iOS.Lottie": "1.5.1.1"
         },
         "compile": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         },
         "runtime": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         }
       },
       "DryIoc.dll/4.0.4": {
@@ -888,13 +857,14 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Acr.UserDialogs": "7.0.4",
-          "Com.Airbnb.Xamarin.Forms.Lottie": "3.0.0",
+          "Com.Airbnb.Xamarin.Forms.Lottie": "1.5.2.1",
           "Newtonsoft.Json": "12.0.2",
           "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
           "Prism.Forms": "7.2.0.1367",
           "Xamarin.Essentials": "1.1.0",
-          "Xamarin.Forms": "4.0.0.425677"
+          "Xamarin.Forms": "4.1.0.673156",
+          "Xamarin.Forms.Visual.Material": "4.1.0.673156"
         },
         "compile": {
           "bin/placeholder/InspectionApp.dll": {}
@@ -905,13 +875,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
-      "Acr.UserDialogs/7.0.4": {
+      "Acr.UserDialogs/7.0.22": {
         "type": "package",
-        "dependencies": {
-          "BTProgressHUD": "1.2.0.6"
-        },
         "frameworkAssemblies": [
-          "OpenTK-1.0"
+          "System.Drawing.Common.dll"
         ],
         "compile": {
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
@@ -920,35 +887,27 @@
           "lib/xamarinios10/Acr.UserDialogs.dll": {}
         }
       },
-      "BTProgressHUD/1.2.0.6": {
+      "Com.Airbnb.iOS.Lottie/1.5.1.1": {
         "type": "package",
         "compile": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         },
         "runtime": {
-          "lib/Xamarin.iOS10/BTProgressHUD.dll": {}
+          "lib/xamarinios/Lottie.iOS.dll": {}
         }
       },
-      "Com.Airbnb.iOS.Lottie/2.5.8": {
-        "type": "package",
-        "compile": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        },
-        "runtime": {
-          "lib/xamarinios10/Lottie.iOS.dll": {}
-        }
-      },
-      "Com.Airbnb.Xamarin.Forms.Lottie/3.0.0": {
+      "Com.Airbnb.Xamarin.Forms.Lottie/1.5.2.1": {
         "type": "package",
         "dependencies": {
-          "Com.Airbnb.iOS.Lottie": "2.5.8",
-          "Xamarin.Forms": "3.6.0.539721"
+          "Com.Airbnb.iOS.Lottie": "1.5.1.1"
         },
         "compile": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         },
         "runtime": {
-          "lib/xamarinios10/Lottie.Forms.dll": {}
+          "lib/xamarinios/Lottie.Forms.dll": {},
+          "lib/xamarinios/Lottie.Forms.iOS.dll": {}
         }
       },
       "DryIoc.dll/4.0.4": {
@@ -1189,13 +1148,14 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Acr.UserDialogs": "7.0.4",
-          "Com.Airbnb.Xamarin.Forms.Lottie": "3.0.0",
+          "Com.Airbnb.Xamarin.Forms.Lottie": "1.5.2.1",
           "Newtonsoft.Json": "12.0.2",
           "Prism.Core": "7.2.0.1367",
           "Prism.DryIoc.Forms": "7.2.0.1367",
           "Prism.Forms": "7.2.0.1367",
           "Xamarin.Essentials": "1.1.0",
-          "Xamarin.Forms": "4.0.0.425677"
+          "Xamarin.Forms": "4.1.0.673156",
+          "Xamarin.Forms.Visual.Material": "4.1.0.673156"
         },
         "compile": {
           "bin/placeholder/InspectionApp.dll": {}
@@ -1207,91 +1167,74 @@
     }
   },
   "libraries": {
-    "Acr.UserDialogs/7.0.4": {
-      "sha512": "wmeQhteQymYgTwDPSxfuLlWP8qkXKSCcMB0UNQi/SXl4/vvqwzsX3uP5A7kYzxsbthuFWau3Ni0ZyCL7pyb5Fw==",
+    "Acr.UserDialogs/7.0.22": {
+      "sha512": "pgfh39Fc+Pz9ag6OLiRsVQmBOQzCB+72o+KPxov8xqUnTegFFquGJ+Uyfjhf7dRXx6bRJKFiQ6Vm8dOqpUAlXQ==",
       "type": "package",
-      "path": "acr.userdialogs/7.0.4",
+      "path": "acr.userdialogs/7.0.22",
       "files": [
         ".signature.p7s",
-        "acr.userdialogs.7.0.4.nupkg.sha512",
+        "acr.userdialogs.7.0.22.nupkg.sha512",
         "acr.userdialogs.nuspec",
-        "lib/monoandroid81/Acr.UserDialogs.dll",
-        "lib/monoandroid81/Acr.UserDialogs.dll.mdb",
-        "lib/monoandroid81/Acr.UserDialogs.pdb",
         "lib/monoandroid90/Acr.UserDialogs.dll",
-        "lib/monoandroid90/Acr.UserDialogs.dll.mdb",
         "lib/monoandroid90/Acr.UserDialogs.pdb",
+        "lib/monoandroid90/Acr.UserDialogs.xml",
         "lib/netstandard2.0/Acr.UserDialogs.dll",
         "lib/netstandard2.0/Acr.UserDialogs.pdb",
+        "lib/netstandard2.0/Acr.UserDialogs.xml",
         "lib/uap10.0.16299/Acr.UserDialogs.dll",
         "lib/uap10.0.16299/Acr.UserDialogs.pdb",
         "lib/uap10.0.16299/Acr.UserDialogs.pri",
+        "lib/uap10.0.16299/Acr.UserDialogs.xml",
         "lib/uap10.0.16299/Acr.UserDialogs/Acr.UserDialogs.xr.xml",
-        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/ActionSheetContentDialog.xbf",
-        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/DatePickerControl.xbf",
-        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/LoginContentDialog.xbf",
-        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/ProgressContentDialog.xbf",
-        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/TimePickerControl.xbf",
+        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/ActionSheetContentDialog.xaml",
+        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/DatePickerControl.xaml",
+        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/LoginContentDialog.xaml",
+        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/ProgressContentDialog.xaml",
+        "lib/uap10.0.16299/Acr.UserDialogs/Platforms/Uwp/TimePickerControl.xaml",
         "lib/xamarinios10/Acr.UserDialogs.dll",
-        "lib/xamarinios10/Acr.UserDialogs.pdb"
+        "lib/xamarinios10/Acr.UserDialogs.pdb",
+        "lib/xamarinios10/Acr.UserDialogs.xml",
+        "readme.txt"
       ]
     },
-    "BTProgressHUD/1.2.0.6": {
-      "sha512": "rTCMPx/HX/cCvXeQfMKk51gt7+PGwkKqTf2Y/5knlb5kJG0l703dnrxdkg9yzsHC2+aflFSGe97C0iqPw8Ni2A==",
+    "Com.Airbnb.iOS.Lottie/1.5.1.1": {
+      "sha512": "3aTPNqY3eO/GAOFoEsvqtpNDF0McvHKr8l/56V9HQpfZochDwwnH9iI91pDJQxtO6M+2CKyG3or5Oqg5BBIRTw==",
       "type": "package",
-      "path": "btprogresshud/1.2.0.6",
-      "files": [
-        "THIRD-PARTY-NOTICES.txt/NOTICE",
-        "btprogresshud.1.2.0.6.nupkg.sha512",
-        "btprogresshud.nuspec",
-        "lib/Xamarin.iOS10/BTProgressHUD.dll"
-      ]
-    },
-    "Com.Airbnb.iOS.Lottie/2.5.8": {
-      "sha512": "1rAn0l0Mcai7J45s6KsDc+X9kFkxFdoxIb9Gr/9GP4RK5uO1okWytKIbON7aelOzPB0lmG+49J6PNNPgRb01Zw==",
-      "type": "package",
-      "path": "com.airbnb.ios.lottie/2.5.8",
+      "path": "com.airbnb.ios.lottie/1.5.1.1",
       "files": [
         ".signature.p7s",
-        "com.airbnb.ios.lottie.2.5.8.nupkg.sha512",
+        "com.airbnb.ios.lottie.1.5.1.1.nupkg.sha512",
         "com.airbnb.ios.lottie.nuspec",
-        "lib/xamarinios10/Lottie.iOS.dll",
-        "lib/xamarinios10/Lottie.iOS.pdb",
-        "lib/xamarinios10/Lottie.iOS.xml",
-        "lib/xamarinmac20/Lottie.iOS.dll",
-        "lib/xamarinmac20/Lottie.iOS.pdb",
-        "lib/xamarinmac20/Lottie.iOS.xml",
-        "lib/xamarintvos10/Lottie.iOS.dll",
-        "lib/xamarintvos10/Lottie.iOS.pdb",
-        "lib/xamarintvos10/Lottie.iOS.xml",
-        "readme.txt"
+        "lib/Xamarin.Mac/Lottie.macOS.dll",
+        "lib/Xamarin.Mac/Lottie.macOS.pdb",
+        "lib/Xamarin.TVOS/Lottie.tvOS.dll",
+        "lib/Xamarin.TVOS/Lottie.tvOS.pdb",
+        "lib/xamarinios/Lottie.iOS.dll",
+        "lib/xamarinios/Lottie.iOS.pdb"
       ]
     },
-    "Com.Airbnb.Xamarin.Forms.Lottie/3.0.0": {
-      "sha512": "UzYv9B+rzvbJd3fMEG4jt/GpEThGS39++pQrqlcFGFDn16k+ubKRALYD4cDCjDsGgDo2U8MfSPggnhMJO6Ltcw==",
+    "Com.Airbnb.Xamarin.Forms.Lottie/1.5.2.1": {
+      "sha512": "NcuIC9ZeokVnlWKGWKsMCwfW/dUF62wLQUwBriuwQvZJ9joQhCXYmH3qn2i9/6wzQ5txSeyj7OCc8I+dnPpzIA==",
       "type": "package",
-      "path": "com.airbnb.xamarin.forms.lottie/3.0.0",
+      "path": "com.airbnb.xamarin.forms.lottie/1.5.2.1",
       "files": [
         ".signature.p7s",
-        "com.airbnb.xamarin.forms.lottie.3.0.0.nupkg.sha512",
+        "com.airbnb.xamarin.forms.lottie.1.5.2.1.nupkg.sha512",
         "com.airbnb.xamarin.forms.lottie.nuspec",
-        "lib/monoandroid90/Lottie.Forms.dll",
-        "lib/monoandroid90/Lottie.Forms.pdb",
-        "lib/monoandroid90/Lottie.Forms.xml",
-        "lib/netstandard2.0/Lottie.Forms.dll",
-        "lib/netstandard2.0/Lottie.Forms.pdb",
-        "lib/netstandard2.0/Lottie.Forms.xml",
-        "lib/uap10.0.16299/Lottie.Forms.dll",
-        "lib/uap10.0.16299/Lottie.Forms.pdb",
-        "lib/uap10.0.16299/Lottie.Forms.pri",
-        "lib/uap10.0.16299/Lottie.Forms.xml",
-        "lib/xamarinios10/Lottie.Forms.dll",
-        "lib/xamarinios10/Lottie.Forms.pdb",
-        "lib/xamarinios10/Lottie.Forms.xml",
-        "lib/xamarinmac20/Lottie.Forms.dll",
-        "lib/xamarinmac20/Lottie.Forms.pdb",
-        "lib/xamarinmac20/Lottie.Forms.xml",
-        "readme.txt"
+        "lib/MonoAndroid70/Lottie.Forms.Droid.dll",
+        "lib/MonoAndroid70/Lottie.Forms.Droid.pdb",
+        "lib/MonoAndroid70/Lottie.Forms.dll",
+        "lib/MonoAndroid70/Lottie.Forms.pdb",
+        "lib/portable-net45+wp8+win+wpa81+dnxcore50/Lottie.Forms.dll",
+        "lib/portable-net45+wp8+win+wpa81+dnxcore50/Lottie.Forms.pdb",
+        "lib/xamarinios/Lottie.Forms.dll",
+        "lib/xamarinios/Lottie.Forms.iOS.dll",
+        "lib/xamarinios/Lottie.Forms.iOS.pdb",
+        "lib/xamarinios/Lottie.Forms.pdb",
+        "lib/xamarinmac/Lottie.Forms.dll",
+        "lib/xamarinmac/Lottie.Forms.macOS.dll",
+        "lib/xamarinmac/Lottie.Forms.macOS.pdb",
+        "lib/xamarinmac/Lottie.Forms.pdb"
       ]
     },
     "DryIoc.dll/4.0.4": {
@@ -1820,6 +1763,7 @@
   },
   "projectFileDependencyGroups": {
     "Xamarin.iOS,Version=v1.0": [
+      "Acr.UserDialogs >= 7.0.22",
       "InspectionApp >= 1.0.0",
       "Xamarin.Essentials >= 1.1.0",
       "Xamarin.Forms >= 4.0.0.425677",
@@ -1861,6 +1805,10 @@
     "frameworks": {
       "xamarinios10": {
         "dependencies": {
+          "Acr.UserDialogs": {
+            "target": "Package",
+            "version": "[7.0.22, )"
+          },
           "Xamarin.Essentials": {
             "target": "Package",
             "version": "[1.1.0, )"
@@ -1887,5 +1835,20 @@
         "#import": []
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package downgrade: Xamarin.Forms from 4.1.0.673156 to 4.0.0.425677. Reference the package directly from the project to select a different version. \n InspectionApp.iOS -> InspectionApp -> Xamarin.Forms (>= 4.1.0.673156) \n InspectionApp.iOS -> Xamarin.Forms (>= 4.0.0.425677)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "Xamarin.iOS,Version=v1.0",
+        "Xamarin.iOS,Version=v1.0/win",
+        "Xamarin.iOS,Version=v1.0/win-x64",
+        "Xamarin.iOS,Version=v1.0/win-x86"
+      ]
+    }
+  ]
 }

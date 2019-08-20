@@ -9,7 +9,7 @@ namespace InspectionApp.Helpers
 {
   public class Constants
   {
-    public static string BaseUrl = "http://freightcontrolapp.azurewebsites.net/api/v1/";
+    public static string BaseUrl = "https://inspectionapi.azurewebsites.net/api/v1/";
     public static string Login = "Login";
     public static string NotificationTitle => "Inspection Notification";
   }

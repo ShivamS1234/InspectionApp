@@ -102,7 +102,7 @@ namespace InspectionApp.ViewModel
           UsersRequestDTO clientRequestDTO = new UsersRequestDTO()
           {
             Email = UserId,
-            //Pwd = Password,
+            UserPwd = Password,
             //ApplicationId = ConfigurationCommon.ApplicationId,
             //DeviceToken = RememberMe.Get("PushDeviceToken").ToString(),
             //DeviceName = Device.RuntimePlatform,

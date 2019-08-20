@@ -10,6 +10,7 @@ namespace InspectionApp.View
     public LoginPage()
     {
       InitializeComponent();
+      NavigationPage.SetHasNavigationBar(this, false);
     }
 
     private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

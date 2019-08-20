@@ -1,24 +1,17 @@
 ﻿<Properties StartupConfiguration="{4D3A07CF-04EF-48A1-A75C-C05E9AE4D638}|Default">
   <MonoDevelop.Ide.ItemProperties.InspectionApp.Android AndroidDesignerPreferredTheme="Theme.DeviceDefault.Light.NoActionBar.Fullscreen" PreferredExecutionTarget="Android.192.168.57.101:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="InspectionApp/App.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="InspectionApp.iOS/AppDelegate.cs">
     <Files>
-      <File FileName="InspectionApp/ViewModel/LoginPageViewModel.cs" Line="110" Column="20" />
-      <File FileName="InspectionApp/App.xaml.cs" Line="50" Column="6" />
-      <File FileName="InspectionApp/View/LoginPage.xaml" />
-      <File FileName="InspectionApp.Android/MainActivity.cs" Line="21" Column="41" />
+      <File FileName="InspectionApp.iOS/AppDelegate.cs" Line="31" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Option id="ShowAllFiles" value="True" />
           <Node name="InspectionApp" expanded="True">
-            <Node name="InspectionApp" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="View" expanded="True" />
-              <Node name="App.xaml.cs" selected="True" />
-            </Node>
-            <Node name="InspectionApp.Android" expanded="True">
-              <Node name="Assets" expanded="True" />
+            <Node name="InspectionApp" expanded="True" />
+            <Node name="InspectionApp.iOS" expanded="True">
+              <Node name="AppDelegate.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -28,7 +21,10 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/virtualemployee/Desktop/Clients/TFSConnect/InspectionApp/InspectionApp/InspectionApp/ViewModel/RegistrationViewModel.cs" relfile="InspectionApp/ViewModel/RegistrationViewModel.cs" line="122" column="1" />
+      <Breakpoint file="/Users/virtualemployee/Desktop/Clients/TFSConnect/InspectionApp/InspectionApp/InspectionApp/WebServices/WebService.cs" relfile="InspectionApp/WebServices/WebService.cs" line="57" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

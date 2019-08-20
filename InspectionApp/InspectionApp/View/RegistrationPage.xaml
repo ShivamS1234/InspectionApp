@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localBehavior="clr-namespace:Behavior"
+             x:Class="InspectionApp.View.RegistrationPage"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             
+             Title="{Binding Title}">
+     <ContentPage.Resources>
+       <ResourceDictionary>  
+          <Style x:Key="ButtonStyle" TargetType="Button">  
+          <Setter Property="TextColor" Value="White"/>  
+        <Setter Property="BackgroundColor" Value="#183A7A" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="20" />
+      </Style>
+       <Style TargetType="Picker">  
+       <Setter Property="BackgroundColor" Value="#FAFAFA"/>
+      </Style>
+       <Style TargetType="Entry">  
+       <Setter Property="BackgroundColor" Value="#FAFAFA"/>
+      </Style>
+     <Color x:Key="primaryColor">#183A7A</Color>
+      </ResourceDictionary> 
+  </ContentPage.Resources>
+    <ContentPage.Content>
+                <StackLayout VerticalOptions="StartAndExpand" Padding="20">
+                
+              <Entry Visual="Material" TabIndex="0" Text="{Binding Name}" Placeholder="Name"  />
+              <Entry  Visual="Material" TabIndex="1"   PlaceholderColor="Black" Placeholder="Email"  TextColor="{Binding EmailColor,Mode=TwoWay}" Text="{Binding Email}" Keyboard="Email" HorizontalOptions="FillAndExpand" >
+                       <Entry.Behaviors>
+                            <localBehavior:EmailValidatorBehavior/>
+                        </Entry.Behaviors>
+                    </Entry>
+                    <Entry Visual="Material"  Text="{Binding Password}" IsPassword="true" Placeholder="Password" TextColor="{Binding PasswordColor,Mode=TwoWay}">
+               <Entry.Behaviors>
+          <localBehavior:PasswordValidationBehavior/>
+          </Entry.Behaviors>
+        </Entry>
+             <Entry  Visual="Material" TabIndex="2" Text="{Binding PhoneNo}" Placeholder="Mobile No" Keyboard="Telephone" />
+            <Label Visual="Material"  TextColor="Gray" Text="Company Name" FontSize="10" HorizontalOptions="Start" />
+            <Picker Visual="Material" TabIndex="3"  ItemsSource="{Binding CompiniesList}" Title="Company Name" ItemDisplayBinding="{Binding CompanyName}" SelectedItem="{Binding SelectedCompany}" />
+   
+                   <Button Visual="Material"  TabIndex="4" Text="Get Started" Margin="0,15,0,0" Command="{Binding OkayCommand}"  HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" />
+                    <Label Visual="Material"  TextColor="Gray" Text="I agree to Terms of Service and Privacy Policy" FontSize="10" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
+

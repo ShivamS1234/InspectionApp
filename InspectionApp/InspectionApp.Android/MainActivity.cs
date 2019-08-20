@@ -22,9 +22,10 @@ namespace InspectionApp.Droid
 
       Xamarin.Essentials.Platform.Init(this, savedInstanceState);
       global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-      Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
-      AnimationViewRenderer.Init();
-      LoadApplication(new App());
+      //Xamarin.Forms.FormsMaterial.Init(this, savedInstanceState);
+      //AnimationViewRenderer.Init();
+      Acr.UserDialogs.UserDialogs.Init(this);
+      LoadApplication(new App1());
     }
     public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
     {

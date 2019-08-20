@@ -31,7 +31,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions >
                 <StackLayout Grid.Column="0" Grid.Row="0" BackgroundColor="Transparent" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Margin="0,10,0,0">
-                    <Image Source="inspectionLogo.png" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="250" />
+                    <Image Source="inspectionLogo1.png" BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="250" />
                 </StackLayout>
                 <StackLayout BackgroundColor="White" Margin="20,15,20,15" Padding="15,10,15,10" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Grid.Column="0" Grid.Row="1">
                     <Entry x:Name="Email1" Visual="Material" Text="{Binding UserId}" Placeholder="Email ID" TextColor="{Binding EmailColor,Mode=TwoWay}"  HorizontalOptions="FillAndExpand">
@@ -45,7 +45,7 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions >
-                        <Entry Visual="Material" IsPassword="True" x:Name="Password" Text="{Binding Password}" TextColor="Black" Placeholder="Password" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <Entry  Visual="Material" IsPassword="True" x:Name="Password" Text="{Binding Password}" TextColor="Black" Placeholder="Password" Grid.Column="0" Grid.ColumnSpan="2"/>
                         <Image  Source="passimg.png" WidthRequest="20" HeightRequest="20" HorizontalOptions="End" Margin="0,0,0,5" VerticalOptions="Center" Grid.Column="1" >
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1" />
