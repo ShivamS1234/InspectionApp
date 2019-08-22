@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using InspectionApp.Helpers;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -15,6 +16,7 @@ namespace InspectionApp.ViewModel
       {
         await Task.Delay(5000);
         await _navigationService.NavigateAsync("NavigationPage/LoginPage");
+
       });
     }
   }

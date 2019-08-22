@@ -122,15 +122,32 @@ namespace InspectionApp.WebServices
       return result;
     }
     #endregion
-
-    #region truck
-    public async Task<WebServiceResult<TruckResponseDTO>> GetTruckbyID(TruckRequestDTO warehousesRequestDTO)
+    #region Inspection List
+    public async Task<WebServiceResult<InspectionHeadersResponseDTO>> GetHeaderbyID(InspectionHeadersRequestDTO warehousesRequestDTO)
     {
       UTF8Encoding encoder = new UTF8Encoding();
       byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(warehousesRequestDTO));
       string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
 
-      var result = await webService.PostAsync<TruckResponseDTO>("Truck/GetTruckbyID", utfString);
+      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("InspectionHeaders/GetInspectionHeaderById", utfString);
+      return result;
+    }
+    public async Task<WebServiceResult<InspectionDetailsResponseDTO>> GetHeaderDetailsbyID(InspectionDetailsRequestDTO warehousesRequestDTO)
+    {
+      UTF8Encoding encoder = new UTF8Encoding();
+      byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(warehousesRequestDTO));
+      string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
+
+      var result = await webService.PostAsync<InspectionDetailsResponseDTO>("InspectionDetails/GetInspectionDetailsById", utfString);
+      return result;
+    }
+    public async Task<WebServiceResult<InspectionHeadersResponseDTO>> DeleteInspectionById(InspectionHeadersRequestDTO InspectionRequestDTO)
+    {
+      UTF8Encoding encoder = new UTF8Encoding();
+      byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(InspectionRequestDTO));
+      string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
+
+      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("Freight/DeleteInspectionTbFreightId", utfString);
       return result;
     }
     #endregion

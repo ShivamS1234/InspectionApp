@@ -10,6 +10,7 @@ namespace InspectionApp.View
     public DashboardPage()
     {
       InitializeComponent();
+      NavigationPage.SetHasNavigationBar(this, false);
     }
   }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InspectionApp" 
+             x:Class="InspectionApp.View.InspectionListPage"
+             x:Name="InspectionAppPage"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+    <AbsoluteLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="50"/>
+        <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+      <Frame Grid.Row="0" Grid.Column="0" Padding="0" Margin="5" CornerRadius="15" BackgroundColor="Silver">
+        <StackLayout Orientation="Horizontal" Margin="0" Padding="0">
+          <Image Source="search_gray.png" WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent"  VerticalOptions="StartAndExpand" HorizontalOptions="Start"/>
+          <Entry Placeholder="Search"  Text="{Binding SearchTxt}" FontSize="10" VerticalOptions="FillAndExpand" BackgroundColor="White" HorizontalOptions="FillAndExpand" />
+        </StackLayout>
+      </Frame>
+    <local:InfiniteListView x:Name="lst" HasUnevenRows="True" Grid.Column="0" Grid.Row="1"  SeparatorVisibility="Default" SeparatorColor="Silver" ItemsSource="{Binding LstFreights}" SelectedItem="{Binding SelectedFreights}" LoadMoreCommand="{Binding LoadMoreContainerStatusCommand}">
+                        <local:InfiniteListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid BackgroundColor="White" Padding="15" RowSpacing="0.7">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                          <ColumnDefinition Width="9*"/>
+                                          <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" >
+                                            <StackLayout Orientation="Vertical">
+                                            <Label Text="{Binding Description}" FontSize="14" FontAttributes="Bold" HorizontalOptions="StartAndExpand" TextColor="Black" />
+                                            <Label Text="{Binding Name,StringFormat='Assigned to : {0}'}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />
+                                            <Label Text="{Binding ClientOrder,StringFormat='Client Order : {0}'}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />
+                                            <Label Text="{Binding ClientName,StringFormat='Client Name : {0}'}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />
+                                            <Label Text="{Binding PickupOrder,StringFormat='Picker Order : {0}'}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />   
+                                            <Label Text="{Binding truckdescription,StringFormat='Truck Name : {0}'}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />   
+                                            <Label Text="{Binding freightprice,StringFormat='Freight Prices : {0}'}" IsVisible="{Binding Source={x:Reference FreightlistPage}, Path=BindingContext.IsFreightPrices}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />  
+                                            <!--<Label Text="{Binding Email}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="#183A7A" />-->
+                                            <Label Text="{Binding Status,StringFormat='Status : {0}'}" FontSize="12"  HorizontalOptions="StartAndExpand" TextColor="{Binding StatusColor}" />
+                                            </StackLayout>
+                                        </Grid>
+                                       <ImageButton  Source="arrow.png" Command="{Binding Source={x:Reference Name=FreightlistPage}, Path=BindingContext.RowTapCommand}" CommandParameter="{Binding .}" Grid.Row="0" Grid.Column="1"  WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent"  VerticalOptions="Start" HorizontalOptions="Start"/>
+                  <ImageButton  Source="delete.png" IsVisible="{Binding IsFreightPrices}" Command="{Binding Path=BindingContext.DeleteVolumeCommand, Source={x:Reference lst}}" CommandParameter="{Binding .}" Grid.Row="0" Grid.Column="1"  WidthRequest="50" HeightRequest="50" BackgroundColor="Transparent"  VerticalOptions="End" HorizontalOptions="Start"/>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </local:InfiniteListView.ItemTemplate>
+     </local:InfiniteListView>
+    </Grid>
+        <ImageButton x:Name="btnPlus"  BackgroundColor="Transparent" Source="plus.png" HeightRequest="75" 
+                     AbsoluteLayout.LayoutBounds="0.88,0.9,75,75" 
+                     AbsoluteLayout.LayoutFlags="XProportional,YProportional"                       
+                     Command="{Binding AddNewFreight}">
+        </ImageButton>
+      </AbsoluteLayout>
+    </ContentPage.Content>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Icon="filterIcon.png" Command="{Binding FilterCommand}" />
+  </ContentPage.ToolbarItems>
+</ContentPage>
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="InspectionApp.View.AddNewInspectionPage">
+  <ContentPage.Resources>
+       <ResourceDictionary>  
+          <Style x:Key="ButtonStyle" TargetType="Button">  
+          <Setter Property="TextColor" Value="White"/>  
+        <Setter Property="BackgroundColor" Value="#183A7A" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="20" />
+      </Style>
+      <Style TargetType="Editor">  
+       <Setter Property="BackgroundColor" Value="#FAFAFA"/>
+      </Style> 
+       <Style TargetType="Picker">  
+       <Setter Property="BackgroundColor" Value="#FAFAFA"/>
+      </Style>
+      <Style TargetType="Entry">  
+       <Setter Property="BackgroundColor" Value="#FAFAFA"/>
+      </Style>
+     <Color x:Key="primaryColor">#183A7A</Color>
+      </ResourceDictionary> 
+  </ContentPage.Resources>
+    <ContentPage.Content>
+    <ScrollView BackgroundColor="White">
+      <Grid Padding="20">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="90"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="Silver" Grid.Row="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition  Width="*"/>
+          <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+         <StackLayout Grid.Row="0" Grid.Column="0" Padding="20">
+          <Label FontSize="Medium" Text="Create New Inspection"/>
+          <Label FontSize="Medium" Text="Fields marked with * are mandatory"/>
+         </StackLayout>
+          <StackLayout Grid.Row="0" Grid.Column="1" Margin="0" Padding="0" HorizontalOptions="End" Orientation="Horizontal">
+           <Frame  Padding="0">
+              <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
+          <Image  Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start"  VerticalOptions="Start" >
+                   
+                        </Image>
+          <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All"/>
+      </StackLayout>
+          </Frame>
+             <Frame Padding="0" HorizontalOptions="End">
+              <StackLayout BackgroundColor="{StaticResource primaryColor}" Orientation="Horizontal"   Grid.Row="0" Padding="20">
+          <Image  Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start"  VerticalOptions="Start" >
+                     
+                        </Image>
+          <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End"/>
+      </StackLayout>
+          </Frame>
+            </StackLayout>
+        </Grid>
+      </Grid>
+<!-- <StackLayout VerticalOptions="StartAndExpand" Padding="20">
+                <Label FontSize="10" Text="Freight Description"/>
+                  <Editor Text="{Binding FreightDesp}" HeightRequest="60" IsEnabled="{Binding IsEnableAll}" PlaceholderColor="Gray" Placeholder="Freight Description"  />
+            <Label FontSize="10" Text="From WareHouse"/>
+      <StackLayout Orientation="Horizontal">
+      <Picker x:Name="warehousfrom"  ItemsSource="{Binding WarehouseList}" IsEnabled="{Binding IsEnableAll}" Title="From WareHouse" HorizontalOptions="FillAndExpand"
+               ItemDisplayBinding="{Binding WarehouseName}" SelectedItem="{Binding SelectedFromWarehouse}" />
+
+        </StackLayout>
+      
+                 <Label FontSize="10" IsVisible="{Binding IsEnableAll}" Text="Freight Prices"/>
+              <Entry Text="{Binding FreightPrices}" IsVisible="{Binding IsEnableAll}" IsEnabled="{Binding IsEnableAll}"  Placeholder="Freight Prices" Keyboard="Numeric" />
+            
+                   <Button  Text="Save" Command="{Binding OkayCommand}"  HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" />
+                </StackLayout>-->
+      </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

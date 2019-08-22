@@ -78,6 +78,14 @@ namespace InspectionApp.ViewModel
       RegisterCommand = new Command(async () => Register_Command());
       //UserId = "Shivammcu@gmail.com";
       //Password = "Shivam@1234";
+      if (IsSwitchedToggled)
+      {
+        if (!string.IsNullOrEmpty(UserId) && !string.IsNullOrEmpty(Password))
+        {
+          _navigationService.NavigateAsync("DashboardPage");
+        }
+      }
+
     }
 
     public async void Login_Command()
@@ -119,6 +127,7 @@ namespace InspectionApp.ViewModel
             };
             RememberMe.Set("userID", result.Data._Users.Id);
             RememberMe.Set("CmpID", result.Data._Users.CompanyId);
+            RememberMe.Set("UserRoleId", result.Data._Users.CompanyId);
             if (IsSwitchedToggled)
             {
               RememberMe.Set("username", this.UserId);
@@ -126,6 +135,7 @@ namespace InspectionApp.ViewModel
             }
             RememberMe.Set("isSwitchedToggled", IsSwitchedToggled);
             await _navigationService.NavigateAsync("DashboardPage");
+            await Xamarin.Forms.Application.Current.SavePropertiesAsync();
           }
           else
           {

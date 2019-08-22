@@ -96,8 +96,14 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\inspectionimage.png" />
     <AndroidResource Include="Resources\drawable\inspectionLogo1.png" />
+    <AndroidResource Include="Resources\drawable\iconsReport.png" />
+    <AndroidResource Include="Resources\drawable\DetailsIcon.png" />
+    <AndroidResource Include="Resources\drawable\InspectionList.png" />
+    <AndroidResource Include="Resources\drawable\turn_off.png" />
+    <AndroidResource Include="Resources\drawable\passimg.png" />
+    <AndroidResource Include="Resources\drawable\delete.png" />
+    <AndroidResource Include="Resources\drawable\done.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

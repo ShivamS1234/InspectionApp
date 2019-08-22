@@ -1,62 +1,71 @@
 ﻿using System;
-using System.Windows.Input;
-using Acr.UserDialogs;
-using InspectionApp.Helpers;
-using InspectionApp.WebServices;
 using Prism.Navigation;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Prism.Navigation;
+using System.Windows.Input;
 using Xamarin.Forms;
+using Prism.Ioc;
+using System.Collections;
+using Acr.UserDialogs;
+using Inspection.Resouces.DTO.Request;
+using InspectionApp.WebServices;
+using System.Collections.ObjectModel;
+using Inspection.Resouces.DTO.Response;
+using Inspection.Resouces.Entites.CustomModel;
+using System.Threading.Tasks;
+using InspectionApp.Helpers;
+using System.Linq;
 
 namespace InspectionApp.ViewModel
 {
-  public class DashBoardViewModel : BaseViewModel
+  class DashBoardViewModel : BaseViewModel
   {
-    #region propertise
-    WebServiceManager webServiceManager;
+    #region binding_private_propertise
     INavigationService _navigationService;
-    Command _FreightCommand, _StatusCommand, _WarehouseCommand, _UsersCommand, _logoutCommand;
+    WebServiceManager webServiceManager;
+    Command _AddNewInspection, _InspectionList;
+    int UserRoleId;
+    public Command AddNewInspection
+    {
+      get
+      {
+        return _AddNewInspection ?? (_AddNewInspection = new Command(async () => AddNew_Command()));
+      }
 
+    }
+    public Command InspectionList
+    {
+      get
+      {
+        return _InspectionList ?? (_InspectionList = new Command(async () => Inspection_List()));
+      }
+
+    }
     public ICommand LoginCommand { get; set; }
-
-    public Command FreightCommand
-    {
-      get
-      {
-        return _FreightCommand ?? (_FreightCommand = new Command(() => { ExecuteFreightCommandAsync(); }));
-      }
-    }
-    public Command StatusCommand
-    {
-      get
-      {
-        return _StatusCommand ?? (_StatusCommand = new Command(() => { ExecuteStatusCommandAsync(); }));
-      }
-    }
-    public Command WarehouseCommand
-    {
-      get
-      {
-        return _WarehouseCommand ?? (_WarehouseCommand = new Command(() => { ExecuteWarehouseCommandAsync(); }));
-      }
-    }
-    public Command UsersCommand
-    {
-      get
-      {
-        return _UsersCommand ?? (_UsersCommand = new Command(() => { ExecuteUsersCommandAsync(); }));
-      }
-    }
-
     #endregion
+
 
     public DashBoardViewModel(INavigationService navigationService) : base(navigationService)
     {
-      _navigationService = navigationService;
-      LoginCommand = new Command(async () => ExecuteLogoutCommandAsync());
-      Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
+      try
       {
-        //InitData.GetAllInitData();
-      });
+        _navigationService = navigationService;
+        webServiceManager = new WebServiceManager();
+        Title = "Inspections";
+        LoginCommand = new Command(async () => ExecuteLogoutCommandAsync());
+        UserRoleId = Convert.ToInt32(RememberMe.Get("UserRoleId"));
+      }
+      catch (Exception ex)
+      {
+        throw ex;
+      }
     }
+    public override void OnNavigatedTo(INavigationParameters parameters)
+    {
+    }
+    #region method
     private async void ExecuteLogoutCommandAsync()
     {
       try
@@ -70,39 +79,32 @@ namespace InspectionApp.ViewModel
       }
 
     }
-    private async void ExecuteFreightCommandAsync()
+    public async void AddNew_Command()
     {
-      await _navigationService.NavigateAsync("FreightListPage");
-
-    }
-    private async void ExecuteStatusCommandAsync()
-    {
-
-      if (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator)
+      if (UserRoleId == (int)ConfigurationCommon.UserRole.Administrator)
       {
-        await _navigationService.NavigateAsync("StatusListPage");
+        await _navigationService.NavigateAsync("AddNewInspectionPage");
       }
       else
       {
-        await UserDialogs.Instance.AlertAsync("You are not authorized to access this screen!");
+        await UserDialogs.Instance.AlertAsync("You are not authorized to create freight items!");
       }
     }
-    private async void ExecuteWarehouseCommandAsync()
+    public async void Inspection_List()
     {
-      if (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator)
+      if (UserRoleId == (int)ConfigurationCommon.UserRole.Administrator)
       {
-        await _navigationService.NavigateAsync("WarehosueListPage");
+        var parameters = new NavigationParameters();
+        parameters.Add("ScreenRight", "Add New Freight");
+        await _navigationService.NavigateAsync("RegistrationFreightPage", parameters);
       }
       else
       {
-        await UserDialogs.Instance.AlertAsync("You are not authorized to access this screen!");
+        await UserDialogs.Instance.AlertAsync("You are not authorized to create freight items!");
       }
-
     }
-    private async void ExecuteUsersCommandAsync()
-    {
-      //await _navigationService.NavigateAsync("/NavigationPage/Login");
-    }
-
+    #endregion
   }
 }
+
+

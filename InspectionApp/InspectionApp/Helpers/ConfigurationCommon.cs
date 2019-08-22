@@ -8,7 +8,7 @@ namespace InspectionApp.Helpers
     public enum UserRole
     {
       Driver = 1,
-      Administrator = 2,
+      Administrator = 1,
       Client = 3
     }
     public static string CurrentFilter = string.Empty;
