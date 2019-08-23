@@ -3,7 +3,6 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Prism.Navigation;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Prism.Ioc;
@@ -82,7 +81,7 @@ namespace InspectionApp.ViewModel
       {
         if (!string.IsNullOrEmpty(UserId) && !string.IsNullOrEmpty(Password))
         {
-          _navigationService.NavigateAsync("DashboardPage");
+          _navigationService.NavigateAsync("NavigationPage/DashboardPage");
         }
       }
 

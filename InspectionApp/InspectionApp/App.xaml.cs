@@ -66,6 +66,7 @@ namespace InspectionApp
       containerRegistry.RegisterForNavigation<RegistrationPage, RegistrationViewModel>();
       containerRegistry.RegisterForNavigation<DashboardPage, DashBoardViewModel>();
       containerRegistry.RegisterForNavigation<AddNewInspectionPage, AddNewInspectionViewModel>();
+      containerRegistry.RegisterForNavigation<InspectionListPage, InspectionListViewModel>();
     }
   }
 }

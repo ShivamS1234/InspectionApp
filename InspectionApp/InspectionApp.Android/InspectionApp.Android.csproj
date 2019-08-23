@@ -104,6 +104,9 @@
     <AndroidResource Include="Resources\drawable\passimg.png" />
     <AndroidResource Include="Resources\drawable\delete.png" />
     <AndroidResource Include="Resources\drawable\done.png" />
+    <AndroidResource Include="Resources\drawable\search.png" />
+    <AndroidResource Include="Resources\drawable\arrow.png" />
+    <AndroidResource Include="Resources\drawable\deleteRow.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

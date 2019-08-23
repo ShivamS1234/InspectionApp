@@ -71,7 +71,8 @@ namespace InspectionApp.ViewModel
       try
       {
         //await _navigationService.NavigateAsync("/LoginPage");
-        var status = await _navigationService.GoBackToRootAsync();
+        //await _navigationService.NavigateAsync("NavigationPage/LoginPage");
+        var status = await _navigationService.GoBackAsync();
       }
       catch (Exception ex)
       {
@@ -94,9 +95,9 @@ namespace InspectionApp.ViewModel
     {
       if (UserRoleId == (int)ConfigurationCommon.UserRole.Administrator)
       {
-        var parameters = new NavigationParameters();
-        parameters.Add("ScreenRight", "Add New Freight");
-        await _navigationService.NavigateAsync("RegistrationFreightPage", parameters);
+        //var parameters = new NavigationParameters();
+        //parameters.Add("ScreenRight", "Add New Freight");
+        //await _navigationService.NavigateAsync("RegistrationFreightPage", parameters);
       }
       else
       {

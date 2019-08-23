@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="InspectionApp.View.AddNewInspectionPage">
+             x:Class="InspectionApp.View.AddNewInspectionPage"
+               xmlns:localBehavior="clr-namespace:Behavior"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+              Title="{Binding Title}">
   <ContentPage.Resources>
        <ResourceDictionary>  
           <Style x:Key="ButtonStyle" TargetType="Button">  
@@ -23,12 +27,12 @@
       </ResourceDictionary> 
   </ContentPage.Resources>
     <ContentPage.Content>
-    <ScrollView BackgroundColor="White">
-      <Grid Padding="20">
+   
+      <Grid Padding="20" BackgroundColor="White">
         <Grid.RowDefinitions>
           <RowDefinition Height="90"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid BackgroundColor="Silver" Grid.Row="0">
         <Grid.RowDefinitions>
@@ -46,7 +50,9 @@
            <Frame  Padding="0">
               <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
           <Image  Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start"  VerticalOptions="Start" >
-                   
+                            <Image.GestureRecognizers>
+           <TapGestureRecognizer Command="{Binding LoginCommand}"  />
+        </Image.GestureRecognizers>   
                         </Image>
           <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All"/>
       </StackLayout>
@@ -54,13 +60,156 @@
              <Frame Padding="0" HorizontalOptions="End">
               <StackLayout BackgroundColor="{StaticResource primaryColor}" Orientation="Horizontal"   Grid.Row="0" Padding="20">
           <Image  Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start"  VerticalOptions="Start" >
-                     
+                            <Image.GestureRecognizers>
+           <TapGestureRecognizer Command="{Binding DetailsList}"  />
+        </Image.GestureRecognizers>     
                         </Image>
           <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End"/>
       </StackLayout>
           </Frame>
             </StackLayout>
         </Grid>
+       <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" BackgroundColor="White">
+     <StackLayout VerticalOptions="FillAndExpand" >
+          <TableView Intent="Settings"   HasUnevenRows="true">
+    <TableRoot>
+        <TableSection  Title="Header Inspection">
+                 <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Company Name" WidthRequest="200"  VerticalTextAlignment="Center"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                          <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                          <Image  Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End"  VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                      </StackLayout>
+                 </ViewCell>
+                 <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Invoice" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                        <Entry HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      </StackLayout>
+                  </ViewCell>
+                   <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Product Name" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                        <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                          <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                          <Image  Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End"  VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                      </StackLayout>
+                 </ViewCell>
+                 <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Variety Name" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                         <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                          <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                          <Image  Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End"  VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                      </StackLayout>
+                 </ViewCell>
+                 <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Variety Name" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                      <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                          <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                          <Image  Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End"  VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                      </StackLayout>
+                 </ViewCell>
+                 <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Brand Name" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                           <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                          <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                          <Image  Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End"  VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                      </StackLayout>
+                 </ViewCell>
+                  <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Country of Origin" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                           <Grid HorizontalOptions="FillAndExpand"  BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                      </Grid.ColumnDefinitions>
+                          <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                          <Image  Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End"  VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                      </StackLayout>
+                  </ViewCell>
+                  <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Total Box Quantities" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                          <Entry Keyboard="Numeric"  HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      </StackLayout>
+                  </ViewCell>
+                  <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Temp On Caja" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                          <Entry Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      </StackLayout>
+                  </ViewCell>
+                   <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Temp On Termografo" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                          <Entry Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      </StackLayout>
+                  </ViewCell>
+                   <ViewCell>
+                      <StackLayout Padding="15" Orientation="Horizontal">
+                          <Label Text="Palletizing Condition" WidthRequest="200"
+                                 TextColor="#7C7C7C" FontSize="Large" />
+                          <Entry Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      </StackLayout>
+                  </ViewCell>
+        </TableSection>
+    </TableRoot>
+</TableView>
+     </StackLayout>
+              </ScrollView>
       </Grid>
 <!-- <StackLayout VerticalOptions="StartAndExpand" Padding="20">
                 <Label FontSize="10" Text="Freight Description"/>
@@ -77,7 +226,7 @@
             
                    <Button  Text="Save" Command="{Binding OkayCommand}"  HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" />
                 </StackLayout>-->
-      </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>
 
