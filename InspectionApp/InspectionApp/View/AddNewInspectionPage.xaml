@@ -1,5 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InspectionApp.View.AddNewInspectionPage" xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" Title="{Binding Title}">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InspectionApp.View.AddNewInspectionPage" xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+             prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:local="clr-namespace:InspectionApp.Helpers;"
+             Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -98,7 +101,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker ItemsSource="{Binding ProductList}" SelectedItem="{Binding SelectedProduct}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Picker ItemsSource="{x:Static local:InitData.ProductList}" ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProduct}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                             <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
@@ -113,7 +116,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker ItemsSource="{Binding VarietyList}" SelectedItem="{Binding SelectedVariety}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Picker ItemsSource="{x:Static local:InitData.VarietyList}" ItemDisplayBinding="{Binding VarietyName}" SelectedItem="{Binding SelectedVariety}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                             <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
@@ -128,7 +131,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker Grid.Row="0" ItemsSource="{Binding BrandList}" SelectedItem="{Binding SelectedBrand}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Picker Grid.Row="0" ItemsSource="{x:Static local:InitData.BrandList}" ItemDisplayBinding="{Binding BrandName}" SelectedItem="{Binding SelectedBrand}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                             <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
@@ -143,7 +146,7 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker Grid.Row="0" ItemsSource="{Binding CountryofOriginList}" SelectedItem="{Binding SelectedCountryofOrigin}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Picker Grid.Row="0" ItemsSource="{x:Static local:InitData.CountryofOriginList}" ItemDisplayBinding="{Binding CountryName}" SelectedItem="{Binding SelectedCountryofOrigin}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                             <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
@@ -178,20 +181,5 @@
                 </StackLayout>
             </ScrollView>
         </Grid>
-        <!-- <StackLayout VerticalOptions="StartAndExpand" Padding="20">
-                <Label FontSize="10" Text="Freight Description"/>
-                  <Editor Text="{Binding FreightDesp}" HeightRequest="60" IsEnabled="{Binding IsEnableAll}" PlaceholderColor="Gray" Placeholder="Freight Description"  />
-            <Label FontSize="10" Text="From WareHouse"/>
-      <StackLayout Orientation="Horizontal">
-      <Picker x:Name="warehousfrom"  ItemsSource="{Binding WarehouseList}" IsEnabled="{Binding IsEnableAll}" Title="From WareHouse" HorizontalOptions="FillAndExpand"
-               ItemDisplayBinding="{Binding WarehouseName}" SelectedItem="{Binding SelectedFromWarehouse}" />
-
-        </StackLayout>
-      
-                 <Label FontSize="10" IsVisible="{Binding IsEnableAll}" Text="Freight Prices"/>
-              <Entry Text="{Binding FreightPrices}" IsVisible="{Binding IsEnableAll}" IsEnabled="{Binding IsEnableAll}"  Placeholder="Freight Prices" Keyboard="Numeric" />
-            
-                   <Button  Text="Save" Command="{Binding OkayCommand}"  HorizontalOptions="FillAndExpand" Style="{StaticResource ButtonStyle}" />
-                </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
