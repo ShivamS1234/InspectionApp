@@ -145,7 +145,13 @@ namespace InspectionApp.ViewModel
             try
             {
                 UserDialogs.Instance.ShowLoading();
-                GetAllInitData();
+                if (parameters != null)
+                {
+                    if (parameters.ContainsKey("HeaderID"))
+                    {
+                        GetAllInitData(parameters.GetValue<int>("HeaderID"));
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -154,14 +160,14 @@ namespace InspectionApp.ViewModel
             }
         }
         #region method
-        public async void GetAllInitData()
+        public async void GetAllInitData(int headerID)
         {
             try
             {
                 UserDialogs.Instance.ShowLoading("Loading...");
                 InspectionDetailsRequestDTO headerRequestDTO = new InspectionDetailsRequestDTO()
                 {
-                    InspectionHeaderId = 0,
+                    InspectionHeaderId = headerID,
                 };
                 var result = await webServiceManager.GetHeaderDetailsbyID(headerRequestDTO).ConfigureAwait(true);
                 if (result.IsSuccess)
@@ -171,7 +177,7 @@ namespace InspectionApp.ViewModel
                         LstDetails = new ObservableCollection<InspectionDetail>();
                         foreach (var data in result.Data.InspectionDetail)
                         {
-                            //LstFreights.Add(data);
+                            LstDetails.Add(data);
                         }
                         LstDetails = new ObservableCollection<InspectionDetail>(LstDetails.OrderBy(a => a.Id));
                         TempLstDetail = LstDetails;

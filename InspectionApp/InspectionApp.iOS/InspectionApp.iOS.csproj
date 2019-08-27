@@ -140,4 +140,19 @@
       <Name>InspectionApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\camera.json" />
+    <BundleResource Include="Resources\delete.png" />
+    <BundleResource Include="Resources\deleteRow.png" />
+    <BundleResource Include="Resources\DetailsIcon.png" />
+    <BundleResource Include="Resources\done.png" />
+    <BundleResource Include="Resources\iconsReport.png" />
+    <BundleResource Include="Resources\InspectionList.png" />
+    <BundleResource Include="Resources\inspectionLogo1.png" />
+    <BundleResource Include="Resources\passimg.png" />
+    <BundleResource Include="Resources\plus.png" />
+    <BundleResource Include="Resources\search.png" />
+    <BundleResource Include="Resources\turn_off.png" />
+  </ItemGroup>
 </Project>

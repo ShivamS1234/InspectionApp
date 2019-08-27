@@ -124,26 +124,26 @@ namespace InspectionApp.ViewModel
         }
         public async void AddNew_Command()
         {
-            //if (SelectedCompany == null)
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Alert ", "Please Select Company Name!", "ok");
-            //}
-            //if (SelectedProduct == null)
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Alert ", "Please Select Product Name!", "ok");
-            //}
-            //if (SelectedVariety == null)
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Alert ", "Please Select Variety Name!", "ok");
-            //}
-            //else if (SelectedBrand == null)
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Alert", "Please Select Brand Name!", "ok");
-            //}
-            //else if (SelectedCountryofOrigin == null)
-            //{
-            //    await App.Current.MainPage.DisplayAlert("Alert", "Please Select CountryofOrigin Name!", "ok");
-            //}
+            if (SelectedCompany == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert ", "Please Select Company Name!", "ok");
+            }
+            if (SelectedProduct == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert ", "Please Select Product Name!", "ok");
+            }
+            if (SelectedVariety == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert ", "Please Select Variety Name!", "ok");
+            }
+            else if (SelectedBrand == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please Select Brand Name!", "ok");
+            }
+            else if (SelectedCountryofOrigin == null)
+            {
+                await App.Current.MainPage.DisplayAlert("Alert", "Please Select CountryofOrigin Name!", "ok");
+            }
             if (TotalBoxQua == 0)
             {
                 await App.Current.MainPage.DisplayAlert("Alert", "Please Enter Total Box Quantities!", "ok");
@@ -167,27 +167,30 @@ namespace InspectionApp.ViewModel
                     UserDialogs.Instance.ShowLoading("Loading...");
                     InspectionHeadersRequestDTO inspectionHeaderRequestDTO = new InspectionHeadersRequestDTO()
                     {
-                        CompanyId = Convert.ToInt32(RememberMe.Get("CmpID")),
+                        CompanyId = SelectedCompany.Id,
                         InspectionDate = DateTime.Now,
                         UserId = Convert.ToInt32(RememberMe.Get("userID")),
                         Invoice = Invoice,
-                        ProducerId = 6,
+                        ProducerId = SelectedProduct.Id,
                         //ProducerId = SelectedProduct.Id,
-                        VarietyId = 7,
-                        //VarietyId = SelectedVariety.Id,
-                        BrandId = 8,
-                        //BrandId =SelectedBrand.Id,
-                        CountryofOriginId = 9,
-                        //CountryofOriginId = SelectedCountryofOrigin.Id,
+                        //VarietyId = 7,
+                        VarietyId = SelectedVariety.Id,
+                        //BrandId = 8,
+                        BrandId = SelectedBrand.Id,
+                        //CountryofOriginId = 9,
+                        CountryofOriginId = SelectedCountryofOrigin.Id,
                         TotalBoxQuantities = TotalBoxQua,
                         TempOnCaja = TempOnCaja,
                         TempOnTermografo = TempOnTermografo,
-                        PalletizingConditionId = PalletizingCondition
+                        PalletizingConditionId = PalletizingCondition,
+
                     };
                     var result = await webServiceManager.RegistrationInspectionHeaderAsync(inspectionHeaderRequestDTO).ConfigureAwait(true); ;
                     if (result.IsSuccess && result.Data.StatusCode == 0)
                     {
-                        await _navigationService.NavigateAsync("InspectionDetailsListPage");
+                        var parameters = new NavigationParameters();
+                        parameters.Add("HeaderID", result.Data.Id);
+                        await _navigationService.NavigateAsync("InspectionDetailsListPage", parameters);
                     }
                     else
                     {
