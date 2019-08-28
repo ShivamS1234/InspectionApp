@@ -131,7 +131,7 @@ namespace InspectionApp.ViewModel
         Title = "Inspections";
         LstFreights = new ObservableCollection<FreightTbDetails>();
         RowTapCommand = new Command(RowTap_Command);
-        ConfigurationCommon.CurrentFilter = ConfigurationCommon.FilterArray[0];
+        ConfigurationCommon.CurrentFilter = ConfigurationCommon.FilterDetailsArrayStatus[0];
         if (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator)
         {
           IsFreightPrices = true;
@@ -289,7 +289,7 @@ namespace InspectionApp.ViewModel
       try
       {
 
-        var actionResult = await UserDialogs.Instance.ActionSheetAsync("Filter", "Cancel", "Clear Filter", null, ConfigurationCommon.FilterArray.ToArray());
+        var actionResult = await UserDialogs.Instance.ActionSheetAsync("Filter", "Cancel", "Clear Filter", null, ConfigurationCommon.FilterDetailsArrayStatus.ToArray());
         UserDialogs.Instance.ShowLoading();
         if (LstFreights != null && LstFreights.Count > 0)
         {
@@ -313,19 +313,19 @@ namespace InspectionApp.ViewModel
       {
         if (txt.Trim().Length > 0)
         {
-          if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterArray[0])
+          if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[0])
           {
             LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.Name.ToLower().Contains(txt.ToLower())));
           }
-          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterArray[1])
+          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[1])
           {
             LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.PickupOrder.ToLower().Contains(txt.ToLower())));
           }
-          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterArray[2])
+          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[2])
           {
             LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.ClientName.ToLower().Contains(txt.ToLower())));
           }
-          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterArray[3])
+          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[3])
           {
             LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.Status.ToLower().Contains(txt.ToLower())));
           }

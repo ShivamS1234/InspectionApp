@@ -1,5 +1,8 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InspectionApp.View.AddNewInspectionPage" xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" xmlns:local="clr-namespace:InspectionApp.Helpers;" Title="{Binding Title}">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="InspectionApp.View.AddNewInspectionPage" 
+             xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" 
+             xmlns:local="clr-namespace:InspectionApp.Helpers;" Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -42,23 +45,21 @@
                 <StackLayout Grid.Row="0" Grid.Column="1" Margin="0" Padding="0" HorizontalOptions="End" Orientation="Horizontal">
                     <Frame Padding="0">
                         <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                            <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding LoginCommand}" />
-                                </Image.GestureRecognizers>
-                            </Image>
+                            <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start"/>
                             <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All" />
                         </StackLayout>
+              <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding LoginCommand}" />
+                                </Frame.GestureRecognizers>
                     </Frame>
                     <Frame Padding="0" HorizontalOptions="End">
                         <StackLayout BackgroundColor="{StaticResource primaryColor}" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                            <Image Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start">
-                                <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding DetailsList}" />
-                                </Image.GestureRecognizers>
-                            </Image>
+                            <Image Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start"/>
                             <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End" />
                         </StackLayout>
+                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DetailsList}" />
+                                </Frame.GestureRecognizers>
                     </Frame>
                 </StackLayout>
             </Grid>
@@ -169,7 +170,16 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Text="Palletizing Condition" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Text="{Binding PalletizingCondition}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                       <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Picker Grid.Row="0" ItemsSource="{x:Static local:InitData.PalletConditionList}" ItemDisplayBinding="{Binding PalletConditionName}" SelectedItem="{Binding SelectedPalletizingCondition}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                                        </Grid>
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>
