@@ -17,6 +17,7 @@ using Inspection.Resouces.Entites.CustomModel;
 using System.Threading.Tasks;
 using InspectionApp.Helpers;
 using System.Linq;
+using Inspection.Resouces.Entites;
 
 namespace InspectionApp.ViewModel
 {
@@ -26,7 +27,7 @@ namespace InspectionApp.ViewModel
     INavigationService _navigationService;
     WebServiceManager webServiceManager;
     Command _loadMoreFreightsCommand, _AddNewFreight, _filterCommand;
-    private ObservableCollection<FreightTbDetails> _lstFreights;
+    private ObservableCollection<InspectionHeader> _lstHeader;
     bool isMoreFreights = true;
 
     public string _searchTxt;
@@ -41,25 +42,24 @@ namespace InspectionApp.ViewModel
 
     }
 
-    public ObservableCollection<FreightTbDetails> LstFreights
+    public ObservableCollection<InspectionHeader> LstInspectionHeader
     {
-      get { return _lstFreights; }
-      set { SetProperty(ref _lstFreights, value); }
+      get { return _lstHeader; }
+      set { SetProperty(ref _lstHeader, value); }
 
     }
-    private ObservableCollection<FreightTbDetails> _TempLstFreights;
-    public ObservableCollection<FreightTbDetails> TempLstFreights
+    private ObservableCollection<InspectionHeader> _TempLstHeader;
+    public ObservableCollection<InspectionHeader> TempLstHeader
     {
-      get { return _TempLstFreights; }
-      set { SetProperty(ref _TempLstFreights, value); }
+      get { return _TempLstHeader; }
+      set { SetProperty(ref _TempLstHeader, value); }
     }
 
-    private FreightTbDetails _SelectedFreights;
-    public FreightTbDetails SelectedFreights
+    private InspectionHeader _SelectedHeader;
+    public InspectionHeader SelectedHeader
     {
-      get { return _SelectedFreights; }
-      set { SetProperty(ref _SelectedFreights, value); }
-
+      get { return _SelectedHeader; }
+      set { SetProperty(ref _SelectedHeader, value); }
     }
     private Boolean _IsFreightPrices;
     public Boolean IsFreightPrices
@@ -129,9 +129,9 @@ namespace InspectionApp.ViewModel
         _navigationService = navigationService;
         webServiceManager = new WebServiceManager();
         Title = "Inspections";
-        LstFreights = new ObservableCollection<FreightTbDetails>();
+        LstInspectionHeader = new ObservableCollection<InspectionHeader>();
         RowTapCommand = new Command(RowTap_Command);
-        ConfigurationCommon.CurrentFilter = ConfigurationCommon.FilterDetailsArrayStatus[0];
+        ConfigurationCommon.CurrentFilter = ConfigurationCommon.FilterHeaderArray[0];
         if (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator)
         {
           IsFreightPrices = true;
@@ -176,13 +176,13 @@ namespace InspectionApp.ViewModel
         {
           if (result.Data.InspectionHeader != null && result.Data.InspectionHeader.Count > 0)
           {
-            LstFreights = new ObservableCollection<FreightTbDetails>();
+            LstInspectionHeader = new ObservableCollection<InspectionHeader>();
             foreach (var data in result.Data.InspectionHeader)
             {
-              //LstFreights.Add(data);
+              LstInspectionHeader.Add(data);
             }
-            LstFreights = new ObservableCollection<FreightTbDetails>(LstFreights.OrderBy(a => a.Name));
-            TempLstFreights = LstFreights;
+            LstInspectionHeader = new ObservableCollection<InspectionHeader>(LstInspectionHeader.OrderBy(a => a.Invoice));
+            TempLstHeader = LstInspectionHeader;
           }
           UserDialogs.Instance.HideLoading();
         }
