@@ -28,8 +28,8 @@ namespace InspectionApp.iOS
             App1.ScreenWidth = UIScreen.MainScreen.Bounds.Width;
             App1.ScreenHeight = UIScreen.MainScreen.Bounds.Height;
             global::Xamarin.Forms.Forms.Init();
-            Acr.UserDialogs.UserDialogs.Init(this);
-            LoadApplication(new App());
+            Xamarin.Forms.FormsMaterial.Init();
+            LoadApplication(new App1());
 
             return base.FinishedLaunching(app, options);
         }
