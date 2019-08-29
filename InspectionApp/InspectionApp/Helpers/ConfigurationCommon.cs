@@ -15,7 +15,7 @@ namespace InspectionApp.Helpers
     public static int ApplicationId => 1;
 
     public static List<string> FilterHeaderArray = new List<string>()
-        { "Size Desp", "Weight","Temperature", "QualityScore" };
+        { "Invoice", "Total Box Quantities","Temp On Caja", "Temp On Termografo" };
     public static List<string> FilterDetailsArrayStatus = new List<string>()
       { "Size Desp", "Weight","Temperature", "QualityScore" };
     public static List<string> DeleteArray = new List<string>()

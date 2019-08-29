@@ -88,7 +88,9 @@ namespace InspectionApp.ViewModel
     {
       if (UserRoleId == (int)ConfigurationCommon.UserRole.Administrator)
       {
-        await _navigationService.NavigateAsync("AddNewInspectionPage");
+        var parameters = new NavigationParameters();
+        parameters.Add("ScreenRight", "Add New Header Inspection");
+        await _navigationService.NavigateAsync("AddNewInspectionPage", parameters);
       }
       else
       {

@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using InspectionApp.Helpers;
 using System.Linq;
 using Inspection.Resouces.Entites;
+using InspectionApp.Model;
 
 namespace InspectionApp.ViewModel
 {
@@ -27,7 +28,7 @@ namespace InspectionApp.ViewModel
     INavigationService _navigationService;
     WebServiceManager webServiceManager;
     Command _loadMoreFreightsCommand, _AddNewFreight, _filterCommand;
-    private ObservableCollection<InspectionHeader> _lstHeader;
+    private ObservableCollection<InspectionHeaderModel> _lstHeader;
     bool isMoreFreights = true;
 
     public string _searchTxt;
@@ -42,21 +43,21 @@ namespace InspectionApp.ViewModel
 
     }
 
-    public ObservableCollection<InspectionHeader> LstInspectionHeader
+    public ObservableCollection<InspectionHeaderModel> LstInspectionHeaderModel
     {
       get { return _lstHeader; }
       set { SetProperty(ref _lstHeader, value); }
 
     }
-    private ObservableCollection<InspectionHeader> _TempLstHeader;
-    public ObservableCollection<InspectionHeader> TempLstHeader
+    private ObservableCollection<InspectionHeaderModel> _TempLstHeader;
+    public ObservableCollection<InspectionHeaderModel> TempLstHeader
     {
       get { return _TempLstHeader; }
       set { SetProperty(ref _TempLstHeader, value); }
     }
 
-    private InspectionHeader _SelectedHeader;
-    public InspectionHeader SelectedHeader
+    private InspectionHeaderModel _SelectedHeader;
+    public InspectionHeaderModel SelectedHeader
     {
       get { return _SelectedHeader; }
       set { SetProperty(ref _SelectedHeader, value); }
@@ -68,7 +69,7 @@ namespace InspectionApp.ViewModel
       set { SetProperty(ref _IsFreightPrices, value); }
 
     }
-    public Command LoadMoreFreightsCommand
+    public Command LoadMoreListCommand
     {
       get
       {
@@ -107,9 +108,9 @@ namespace InspectionApp.ViewModel
               var status = await UserDialogs.Instance.ConfirmAsync(ConfigurationCommon.DeleteArray[0], ConfigurationCommon.DeleteArray[1], ConfigurationCommon.DeleteArray[2], ConfigurationCommon.DeleteArray[3]);
               if (status)
               {
-                var item = (e as FreightTbDetails);
-                LstFreights.Remove(item);
-                TempLstFreights.Remove(item);
+                var item = (e as InspectionHeaderModel);
+                LstInspectionHeaderModel.Remove(item);
+                TempLstHeader.Remove(item);
                 await DeleteAsync(item);
               }
             });
@@ -129,7 +130,7 @@ namespace InspectionApp.ViewModel
         _navigationService = navigationService;
         webServiceManager = new WebServiceManager();
         Title = "Inspections";
-        LstInspectionHeader = new ObservableCollection<InspectionHeader>();
+        LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>();
         RowTapCommand = new Command(RowTap_Command);
         ConfigurationCommon.CurrentFilter = ConfigurationCommon.FilterHeaderArray[0];
         if (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator)
@@ -168,21 +169,38 @@ namespace InspectionApp.ViewModel
         UserDialogs.Instance.ShowLoading("Loading...");
         InspectionHeadersRequestDTO headerRequestDTO = new InspectionHeadersRequestDTO()
         {
-          CompanyId = (int)LoginPageViewModel.UserData.CompanyId,
-          UserId = (int)LoginPageViewModel.UserData.Id,
+          CompanyId = Convert.ToInt32(RememberMe.Get("CmpID")),
+          UserId = Convert.ToInt32(RememberMe.Get("userID")),
         };
         var result = await webServiceManager.GetHeaderbyID(headerRequestDTO).ConfigureAwait(true);
         if (result.IsSuccess)
         {
           if (result.Data.InspectionHeader != null && result.Data.InspectionHeader.Count > 0)
           {
-            LstInspectionHeader = new ObservableCollection<InspectionHeader>();
+            LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>();
+            InspectionHeaderModel inspectionDetailModel;
             foreach (var data in result.Data.InspectionHeader)
             {
-              LstInspectionHeader.Add(data);
+              inspectionDetailModel = new InspectionHeaderModel
+              {
+                Id = data.Id,
+                CompanyId = data.CompanyId,
+                InspectionDate = data.InspectionDate,
+                UserId = data.UserId,
+                Invoice = data.Invoice,
+                ProducerId = data.ProducerId,
+                VarietyId = data.VarietyId,
+                BrandId = data.BrandId,
+                CountryofOriginId = data.CountryofOriginId,
+                TotalBoxQuantities = data.TotalBoxQuantities,
+                TempOnCaja = data.TempOnCaja,
+                TempOnTermografo = data.TempOnTermografo,
+                PalletizingConditionId = data.PalletizingConditionId,
+              };
+              LstInspectionHeaderModel.Add(inspectionDetailModel);
             }
-            LstInspectionHeader = new ObservableCollection<InspectionHeader>(LstInspectionHeader.OrderBy(a => a.Invoice));
-            TempLstHeader = LstInspectionHeader;
+            LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>(LstInspectionHeaderModel.OrderBy(a => a.Invoice));
+            TempLstHeader = LstInspectionHeaderModel;
           }
           UserDialogs.Instance.HideLoading();
         }
@@ -264,23 +282,23 @@ namespace InspectionApp.ViewModel
     }
     public async void RowTap_Command(object obj)
     {
-      if ((Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator) || (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Driver))
+      //if ((Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Administrator) || (Convert.ToInt32(LoginPageViewModel.UserData.UserRoleId) == (int)ConfigurationCommon.UserRole.Driver))
+      //{
+      if (obj != null)
       {
-        if (obj != null)
-        {
-          UserDialogs.Instance.ShowLoading();
-          var selectedItem = obj as FreightTbDetails;
-          var parameters = new NavigationParameters();
-          parameters.Add("FreightDetail", selectedItem);
-          parameters.Add("ScreenRight", "Edit Freight");
-          await _navigationService.NavigateAsync("RegistrationFreightPage", parameters);
-          UserDialogs.Instance.HideLoading();
-        }
+        UserDialogs.Instance.ShowLoading();
+        var selectedItem = obj as InspectionHeaderModel;
+        var parameters = new NavigationParameters();
+        parameters.Add("InspectionHeader", selectedItem);
+        parameters.Add("ScreenRight", "Edit Header Inspection");
+        await _navigationService.NavigateAsync("AddNewInspectionPage", parameters);
+        UserDialogs.Instance.HideLoading();
       }
-      else
-      {
-        await UserDialogs.Instance.AlertAsync("You are not authorized to Edit freight items!");
-      }
+      //}
+      //else
+      //{
+      //  await UserDialogs.Instance.AlertAsync("You are not authorized to Edit freight items!");
+      //}
 
     }
 
@@ -288,14 +306,12 @@ namespace InspectionApp.ViewModel
     {
       try
       {
-
-        var actionResult = await UserDialogs.Instance.ActionSheetAsync("Filter", "Cancel", "Clear Filter", null, ConfigurationCommon.FilterDetailsArrayStatus.ToArray());
+        var actionResult = await UserDialogs.Instance.ActionSheetAsync("Filter", "Cancel", "Clear Filter", null, ConfigurationCommon.FilterHeaderArray.ToArray());
         UserDialogs.Instance.ShowLoading();
-        if (LstFreights != null && LstFreights.Count > 0)
+        if (LstInspectionHeaderModel != null && LstInspectionHeaderModel.Count > 0)
         {
           ConfigurationCommon.CurrentFilter = actionResult;
         }
-
       }
       catch
       {
@@ -313,30 +329,30 @@ namespace InspectionApp.ViewModel
       {
         if (txt.Trim().Length > 0)
         {
-          if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[0])
+          if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterHeaderArray[0])
           {
-            LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.Name.ToLower().Contains(txt.ToLower())));
+            LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>(TempLstHeader.Where(x => x.Invoice.ToLower().Contains(txt.ToLower())));
           }
-          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[1])
+          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterHeaderArray[1])
           {
-            LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.PickupOrder.ToLower().Contains(txt.ToLower())));
+            LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>(TempLstHeader.Where(x => x.TotalBoxQuantities >= Convert.ToInt32(txt)));
           }
-          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[2])
+          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterHeaderArray[2])
           {
-            LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.ClientName.ToLower().Contains(txt.ToLower())));
+            LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>(TempLstHeader.Where(x => x.TempOnCaja >= Convert.ToInt32(txt)));
           }
-          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterDetailsArrayStatus[3])
+          else if (ConfigurationCommon.CurrentFilter == ConfigurationCommon.FilterHeaderArray[3])
           {
-            LstFreights = new ObservableCollection<FreightTbDetails>(TempLstFreights.Where(x => x.Status.ToLower().Contains(txt.ToLower())));
+            LstInspectionHeaderModel = new ObservableCollection<InspectionHeaderModel>(TempLstHeader.Where(x => x.TempOnTermografo >= Convert.ToInt32(txt)));
           }
           else
           {
-            LstFreights = TempLstFreights;
+            LstInspectionHeaderModel = TempLstHeader;
           }
         }
         else
         {
-          LstFreights = TempLstFreights;
+          LstInspectionHeaderModel = TempLstHeader;
         }
       }
       catch
@@ -345,7 +361,7 @@ namespace InspectionApp.ViewModel
       }
     }
 
-    private async Task DeleteAsync(FreightTbDetails row)
+    private async Task DeleteAsync(InspectionHeaderModel row)
     {
       try
       {

@@ -165,7 +165,7 @@ namespace InspectionApp.WebServices
       byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(warehousesRequestDTO));
       string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
 
-      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("InspectionHeaders/GetInspectionHeaderById", utfString);
+      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("InspectionHeaders/GetAllInspectionHeader", utfString);
       return result;
     }
     public async Task<WebServiceResult<InspectionDetailsResponseDTO>> GetHeaderDetailsbyID(InspectionDetailsRequestDTO warehousesRequestDTO)

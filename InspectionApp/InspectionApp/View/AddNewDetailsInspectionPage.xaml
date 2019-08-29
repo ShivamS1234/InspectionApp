@@ -23,7 +23,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid Padding="20" BackgroundColor="White">
+        <Grid Padding="20" Visual="Material" BackgroundColor="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="90" />
                 <RowDefinition Height="*" />
@@ -45,16 +45,16 @@
                     <Frame Padding="0">
                         <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
                             <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start"/>
-                            <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All" />
+                            <Label FontSize="Large"  Visual="Material" TextColor="White" VerticalOptions="Center" Text="Clear All" />
                         </StackLayout>
                <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding LoginCommand}" />
                                 </Frame.GestureRecognizers>
                     </Frame>
-                    <Frame Padding="0" HorizontalOptions="End">
+                    <Frame Padding="0" HorizontalOptions="End" Visual="Material">
                         <StackLayout BackgroundColor="{StaticResource primaryColor}" Orientation="Horizontal" Grid.Row="0" Padding="20">
                             <Image Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start"/>
-                            <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End" />
+                            <Label FontSize="Large" Visual="Material" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End" />
                         </StackLayout>
               <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SubmitCommand}" />
@@ -69,7 +69,7 @@
                             <TableSection Title="Detail Inspection">
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Size Name" WidthRequest="200" VerticalTextAlignment="Center" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Label Text="Size Name" Visual="Material" WidthRequest="200" VerticalTextAlignment="Center" TextColor="#7C7C7C" FontSize="Large" />
                                         <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
@@ -77,99 +77,99 @@
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" ItemsSource="{x:Static local:InitData.SizeTbList}" ItemDisplayBinding="{Binding SizeDescription}" SelectedItem="{Binding SelectedSize}" BackgroundColor="Transparent" />
-                                            <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                                            <Picker Grid.Row="0" HorizontalOptions="FillAndExpand" Visual="Material" ItemsSource="{x:Static local:InitData.SizeTbList}" ItemDisplayBinding="{Binding SizeDescription}" SelectedItem="{Binding SelectedSize}" BackgroundColor="Transparent" />
+                                            <Image Grid.Row="0" Visual="Material" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Sample Size" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding SampleSize}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Sample Size" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding SampleSize}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Weight" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding Weight}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Weight" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding Weight}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Physical Count" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding PhysicalCount}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Physical Count" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding PhysicalCount}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Opening Apperence Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Label Visual="Material" Text="Opening Apperence Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Grid Visual="Material" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker Grid.Row="0" ItemsSource="{x:Static local:InitData.OpeningApperenceList}" ItemDisplayBinding="{Binding ApperenceDescription}" SelectedItem="{Binding SelectedOppening}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                                            <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.OpeningApperenceList}" ItemDisplayBinding="{Binding ApperenceDescription}" SelectedItem="{Binding SelectedOppening}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Temperature" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding Temperature}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Temperature" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding Temperature}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Brix" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding Brix}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Brix" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding Brix}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Firmness" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding Firmness}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Firmness" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding Firmness}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Skin Damage" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding SkinDamage}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Skin Damage" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding SkinDamage}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Color" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding Color}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Color" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding Color}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Package Condition" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Label Visual="Material" Text="Package Condition" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Grid Visual="Material" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Picker Grid.Row="0" ItemsSource="{x:Static local:InitData.PackageConditionList}" ItemDisplayBinding="{Binding PackageConditionName}" SelectedItem="{Binding SelectedPackageCondition}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                                            <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.PackageConditionList}" ItemDisplayBinding="{Binding PackageConditionName}" SelectedItem="{Binding SelectedPackageCondition}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
                                         </Grid>
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Comment" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Text="{Binding Comment}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Comment" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Text="{Binding Comment}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Text="Quality Score" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Keyboard="Numeric" Text="{Binding QualityScore}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Label Visual="Material" Text="Quality Score" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                                        <Entry Visual="Material" Keyboard="Numeric" Text="{Binding QualityScore}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>

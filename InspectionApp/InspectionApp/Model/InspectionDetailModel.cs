@@ -34,6 +34,5 @@ namespace InspectionApp.Model
         return null;
       }
     }
-
   }
 }

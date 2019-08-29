@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Acr.UserDialogs;
 using Inspection.Resouces.DTO.Request;
 using Inspection.Resouces.Entites;
 using InspectionApp.Helpers;
+using InspectionApp.Model;
 using InspectionApp.WebServices;
 using Prism.Navigation;
 using Xamarin.Forms;
@@ -15,6 +17,7 @@ namespace InspectionApp.ViewModel
     public Command _DetailsList;
     INavigationService _navigationService;
     WebServiceManager webServiceManager;
+    InspectionHeaderModel _InspectionHeader;
     private IList<Company> _CompiniesList;
     public IList<Company> CompiniesList
     {
@@ -114,6 +117,43 @@ namespace InspectionApp.ViewModel
     }
     public override void OnNavigatedTo(INavigationParameters parameters)
     {
+      try
+      {
+        UserDialogs.Instance.ShowLoading("Loading...");
+        if (parameters != null)
+        {
+          if (parameters.ContainsKey("ScreenRight"))
+          {
+            Title = parameters.GetValue<string>("ScreenRight");
+          }
+          if (parameters.ContainsKey("InspectionHeader"))
+          {
+            _InspectionHeader = parameters["InspectionHeader"] as InspectionHeaderModel;
+            if (_InspectionHeader != null)
+            {
+              SelectedCompany = InitData.CmpList.Where(x => x.Id == _InspectionHeader.CompanyId).FirstOrDefault();
+              Invoice = _InspectionHeader.Invoice;
+              SelectedProduct = InitData.ProductList.Where(x => x.Id == _InspectionHeader.ProducerId).FirstOrDefault();
+              SelectedVariety = InitData.VarietyList.Where(x => x.Id == _InspectionHeader.VarietyId).FirstOrDefault();
+              SelectedBrand = InitData.BrandList.Where(x => x.Id == _InspectionHeader.BrandId).FirstOrDefault();
+              SelectedCountryofOrigin = InitData.CountryofOriginList.Where(x => x.Id == _InspectionHeader.CountryofOriginId).FirstOrDefault();
+              TotalBoxQua = _InspectionHeader.TotalBoxQuantities;
+              TempOnCaja = _InspectionHeader.TempOnCaja;
+              TempOnTermografo = _InspectionHeader.TempOnTermografo;
+              SelectedPalletizingCondition = InitData.PalletConditionList.Where(x => x.Id == _InspectionHeader.PalletizingConditionId).FirstOrDefault();
+            }
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        UserDialogs.Instance.HideLoading();
+        throw ex;
+      }
+      finally
+      {
+        UserDialogs.Instance.HideLoading();
+      }
     }
     public Command DetailsList
     {
@@ -167,6 +207,7 @@ namespace InspectionApp.ViewModel
           UserDialogs.Instance.ShowLoading("Loading...");
           InspectionHeadersRequestDTO inspectionHeaderRequestDTO = new InspectionHeadersRequestDTO()
           {
+            Id = _InspectionHeader != null ? _InspectionHeader.Id : 0,
             CompanyId = SelectedCompany.Id,
             InspectionDate = DateTime.Now,
             UserId = Convert.ToInt32(RememberMe.Get("userID")),

@@ -30,7 +30,7 @@
       </ResourceDictionary> 
   </ContentPage.Resources>
     <ContentPage.Content>
-    <Grid BackgroundColor="White" Padding="15">
+    <Grid BackgroundColor="White"  Padding="15">
       <Grid.RowDefinitions>
         <RowDefinition Height="*"/>
            <RowDefinition Height="25"/>
@@ -44,7 +44,7 @@
         <ColumnDefinition Width="6*"/>
          <ColumnDefinition Width="2*"/>
       </Grid.ColumnDefinitions>
-           <Image Grid.Row="0" Grid.Column="2" Source="turn_off.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"  VerticalOptions="Start" HorizontalOptions="End">
+           <Image Visual="Material" Grid.Row="0" Grid.Column="2" Source="turn_off.png" WidthRequest="30" HeightRequest="30" BackgroundColor="Transparent"  VerticalOptions="Start" HorizontalOptions="End">
                   <Image.GestureRecognizers>
            <TapGestureRecognizer Command="{Binding LoginCommand}"  />
         </Image.GestureRecognizers>    
@@ -54,16 +54,16 @@
                       Android="15" />
       </Grid.Margin>
           </Image>
-         <Image Source="inspectionLogo1.png" Grid.Row="0" Grid.Column="1"  BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="150" />
+         <Image Visual="Material" Source="inspectionLogo1.png" Grid.Row="0" Grid.Column="1"  BackgroundColor="Transparent" Aspect="AspectFit" HeightRequest="150" />
    
-      <Frame Grid.Row="2" Grid.Column="1" WidthRequest="250" Padding="5" CornerRadius="20" HorizontalOptions="Center"  BackgroundColor="{StaticResource primaryColor}">
-     <Grid>
+      <Frame Visual="Material" Grid.Row="2" Grid.Column="1" WidthRequest="250" Padding="5" CornerRadius="20" HorizontalOptions="Center"  BackgroundColor="{StaticResource primaryColor}">
+     <Grid >
        <Grid.RowDefinitions>
         <RowDefinition Height="8*"/>
         <RowDefinition Height="1*"/>
       </Grid.RowDefinitions>
-        <Image Grid.Row="0" Aspect="Fill" VerticalOptions="Fill"  Source="iconsReport.png" />
-        <Label Grid.Row="1" FlexLayout.AlignSelf="1" Text="Create Inspection"  Style="{StaticResource LabelStyle}">
+        <Image Visual="Material" Grid.Row="0" Aspect="Fill" VerticalOptions="Fill"  Source="iconsReport.png" />
+        <Label Visual="Material" Grid.Row="1" FlexLayout.AlignSelf="1" Text="Create Inspection"  Style="{StaticResource LabelStyle}">
             
           </Label>
     </Grid>
@@ -72,14 +72,14 @@
         </Frame.GestureRecognizers>
       </Frame>
  
-      <Frame Grid.Row="3" Grid.Column="1" WidthRequest="250" Padding="5" CornerRadius="20" HorizontalOptions="Center"   BackgroundColor="{StaticResource primaryColor}">
+      <Frame Visual="Material" Grid.Row="3" Grid.Column="1" WidthRequest="250" Padding="5" CornerRadius="20" HorizontalOptions="Center"   BackgroundColor="{StaticResource primaryColor}">
                <Grid>
        <Grid.RowDefinitions>
         <RowDefinition Height="8*"/>
         <RowDefinition Height="1*"/>
       </Grid.RowDefinitions>
-        <Image  Grid.Row="0" Aspect="Fill" VerticalOptions="Fill" Source="InspectionList.png" />
-        <Label Grid.Row="1" Text="Inspection List" Style="{StaticResource LabelStyle}" />
+        <Image Visual="Material" Grid.Row="0" Aspect="Fill" VerticalOptions="Fill" Source="InspectionList.png" />
+        <Label Visual="Material" Grid.Row="1" Text="Inspection List" Style="{StaticResource LabelStyle}" />
                 </Grid>
                <Frame.GestureRecognizers>
            <TapGestureRecognizer Command="{Binding InspectionList}"  />
