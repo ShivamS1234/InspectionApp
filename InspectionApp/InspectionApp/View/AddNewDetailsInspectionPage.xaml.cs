@@ -9,7 +9,14 @@ namespace InspectionApp.View
     {
         public AddNewDetailsInspectionPage()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

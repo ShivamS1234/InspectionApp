@@ -29,6 +29,7 @@
     <Folder Include="WebServices\" />
     <Folder Include="Helpers\" />
     <Folder Include="Model\" />
+    <Folder Include="Converter\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Inspection.Resouces.DTO">
