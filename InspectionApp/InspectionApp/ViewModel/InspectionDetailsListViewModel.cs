@@ -172,8 +172,8 @@ namespace InspectionApp.ViewModel
         {
           InspectionHeaderId = headerID,
         };
-        //var result = await webServiceManager.GetHeaderDetailsbyID(headerRequestDTO).ConfigureAwait(true);
-        var result = await webServiceManager.GetHeaderDetailsAll().ConfigureAwait(true);
+        var result = await webServiceManager.GetHeaderDetailsbyID(headerRequestDTO).ConfigureAwait(true);
+        //var result = await webServiceManager.GetHeaderDetailsAll().ConfigureAwait(true);
         if (result.IsSuccess)
         {
           if (result.Data.InspectionDetail != null && result.Data.InspectionDetail.Count > 0)
@@ -381,9 +381,10 @@ namespace InspectionApp.ViewModel
         InspectionHeadersRequestDTO inspectionTbsRequestDTO = new InspectionHeadersRequestDTO()
         {
           Id = row.Id,
+
           //IsActive = false
         };
-        var result = await webServiceManager.DeleteInspectionById(inspectionTbsRequestDTO).ConfigureAwait(true);
+        var result = await webServiceManager.DeleteInspectionDetailsById(inspectionTbsRequestDTO).ConfigureAwait(true);
         if (result.IsSuccess)
         {
           //write here logic for the after deleting row.

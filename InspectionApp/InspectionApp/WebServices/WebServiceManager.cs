@@ -174,7 +174,7 @@ namespace InspectionApp.WebServices
       byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(warehousesRequestDTO));
       string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
 
-      var result = await webService.PostAsync<InspectionDetailsResponseDTO>("InspectionDetails/GetInspectionDetailsById", utfString);
+      var result = await webService.PostAsync<InspectionDetailsResponseDTO>("InspectionDetails/GetInspectionDetailsByHeaderId", utfString);
       return result;
     }
     public async Task<WebServiceResult<InspectionDetailsResponseDTO>> GetHeaderDetailsAll()
@@ -189,7 +189,7 @@ namespace InspectionApp.WebServices
       byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(InspectionRequestDTO));
       string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
 
-      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("Freight/DeleteInspectionTbFreightId", utfString);
+      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("InspectionHeaders/DeleteInspectionHeaderById", utfString);
       return result;
     }
     public async Task<WebServiceResult<InspectionHeadersResponseDTO>> DeleteInspectionDetailsById(InspectionHeadersRequestDTO InspectionRequestDTO)
@@ -198,7 +198,7 @@ namespace InspectionApp.WebServices
       byte[] data = encoder.GetBytes(JsonConvert.SerializeObject(InspectionRequestDTO));
       string utfString = Encoding.UTF8.GetString(data, 0, data.Length);
 
-      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("Freight/DeleteInspectionTbFreightId", utfString);
+      var result = await webService.PostAsync<InspectionHeadersResponseDTO>("InspectionHeaders/DeleteInspectionDetailsById", utfString);
       return result;
     }
     #endregion
