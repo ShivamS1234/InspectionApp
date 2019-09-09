@@ -102,6 +102,12 @@ namespace InspectionApp.ViewModel
             get { return _TempOnTermografo; }
             set { SetProperty(ref _TempOnTermografo, value); }
         }
+        private Boolean _IsEditHeader = false;
+        public Boolean IsEditHeader
+        {
+            get { return _IsEditHeader; }
+            set { SetProperty(ref _IsEditHeader, value); }
+        }
         private PalletCondition _SelectedPalletizingCondition;
         public PalletCondition SelectedPalletizingCondition
         {
