@@ -14,7 +14,7 @@ namespace InspectionApp.ViewModel
 {
     public class AddNewInspectionViewModel : BaseViewModel
     {
-        public Command _DetailsList, _ClearCommand;
+        public Command _DetailsList, _ClearCommand, _EditCommand;
         INavigationService _navigationService;
         WebServiceManager webServiceManager;
         InspectionHeaderModel _InspectionHeader;
@@ -102,11 +102,17 @@ namespace InspectionApp.ViewModel
             get { return _TempOnTermografo; }
             set { SetProperty(ref _TempOnTermografo, value); }
         }
-        private Boolean _IsEditHeader = false;
+        private Boolean _IsEditHeader = true;
         public Boolean IsEditHeader
         {
             get { return _IsEditHeader; }
             set { SetProperty(ref _IsEditHeader, value); }
+        }
+        private Boolean _IsEditable = false;
+        public Boolean IsEditable
+        {
+            get { return _IsEditable; }
+            set { SetProperty(ref _IsEditable, value); }
         }
         private PalletCondition _SelectedPalletizingCondition;
         public PalletCondition SelectedPalletizingCondition
@@ -131,6 +137,11 @@ namespace InspectionApp.ViewModel
                     if (parameters.ContainsKey("ScreenRight"))
                     {
                         Title = parameters.GetValue<string>("ScreenRight");
+                        if (Title.Contains("New"))
+                        {
+                            IsEditHeader = false;
+                            IsEditable = true;
+                        }
                     }
                     if (parameters.ContainsKey("InspectionHeader"))
                     {
@@ -173,6 +184,13 @@ namespace InspectionApp.ViewModel
             get
             {
                 return _ClearCommand ?? (_ClearCommand = new Command(async () => Clear_Command()));
+            }
+        }
+        public Command EditCommand
+        {
+            get
+            {
+                return _EditCommand ?? (_EditCommand = new Command(async () => Edit_Command()));
             }
         }
         public async void AddNew_Command()
@@ -285,6 +303,11 @@ namespace InspectionApp.ViewModel
             {
                 throw ex;
             }
+        }
+        public async void Edit_Command()
+        {
+            IsEditable = !IsEditable;
+            IsEditHeader = !IsEditHeader;
         }
     }
 }

@@ -28,7 +28,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Grid BackgroundColor="Silver" Grid.Row="0">
+            <Grid BackgroundColor="Silver" IsVisible="{Binding IsEditable}" Grid.Row="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
@@ -67,20 +67,20 @@
                     </Frame>
                 </StackLayout>
             </Grid>
-                <StackLayout Grid.Row="0" IsVisible="{Binding IsEditHeader}" Grid.Row="0" Margin="0" Padding="0" HorizontalOptions="End" Orientation="Horizontal">
-                    <Frame Padding="0">
-                        <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                            <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
-                            <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ClearCommand}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <Frame.GestureRecognizers>
+            <StackLayout Grid.Row="0" Margin="0" Padding="0" IsVisible="{Binding IsEditHeader}" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <Frame Padding="0">
+                    <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
+                        <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
+                        <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="View Inspection Details" />
+                        <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ClearCommand}" />
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                </StackLayout>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClearCommand}" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </StackLayout>
             <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" BackgroundColor="White">
                 <StackLayout VerticalOptions="FillAndExpand">
                     <TableView Intent="Settings" HasUnevenRows="true">
@@ -89,7 +89,7 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Company Name" WidthRequest="200" VerticalTextAlignment="Center" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid Visual="Material" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid Visual="Material" IsEnabled="{Binding IsEditable}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -104,13 +104,13 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Invoice" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" Placeholder="Invoice" Text="{Binding Invoice}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Invoice" Text="{Binding Invoice}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Product Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid Visual="Material" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid Visual="Material" IsEnabled="{Binding IsEditable}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -125,7 +125,7 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Variety Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -140,7 +140,7 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Brand Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -155,7 +155,7 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Country of Origin" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -170,25 +170,25 @@
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Total Box Quantities" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" Placeholder="Total Box Quantities" Text="{Binding TotalBoxQua,Converter={StaticResource IntToString}}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Total Box Quantities" Text="{Binding TotalBoxQua,Converter={StaticResource IntToString}}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Temp On Caja" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" Placeholder="Temp On Caja" Text="{Binding TempOnCaja,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Temp On Caja" Text="{Binding TempOnCaja,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Temp On Termografo" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" Placeholder="Temp On Termografo" Text="{Binding TempOnTermografo,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Temp On Termografo" Text="{Binding TempOnTermografo,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                                     </StackLayout>
                                 </ViewCell>
                                 <ViewCell>
                                     <StackLayout Padding="15" Orientation="Horizontal">
                                         <Label Visual="Material" Text="Palletizing Condition" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                             </Grid.RowDefinitions>
@@ -207,4 +207,7 @@
             </ScrollView>
         </Grid>
     </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="iconsEdit.png" Text="Edit" IsEnabled="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
+    </ContentPage.ToolbarItems>
 </ContentPage>

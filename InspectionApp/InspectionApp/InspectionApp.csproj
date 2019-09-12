@@ -42,4 +42,7 @@
   <ItemGroup>
     <Compile Remove="AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="View\.#AddNewInspectionPage.xaml" />
+  </ItemGroup>
 </Project>

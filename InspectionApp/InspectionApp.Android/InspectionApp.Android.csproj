@@ -109,6 +109,7 @@
     <AndroidResource Include="Resources\drawable\deleteRow.png" />
     <AndroidResource Include="Resources\drawable\plus.png" />
     <AndroidResource Include="Resources\drawable\filterIcon.png" />
+    <AndroidResource Include="Resources\drawable\iconsEdit.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
