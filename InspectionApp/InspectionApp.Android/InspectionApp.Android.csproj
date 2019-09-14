@@ -110,6 +110,7 @@
     <AndroidResource Include="Resources\drawable\plus.png" />
     <AndroidResource Include="Resources\drawable\filterIcon.png" />
     <AndroidResource Include="Resources\drawable\iconsEdit.png" />
+    <AndroidResource Include="Resources\drawable\ViewIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />

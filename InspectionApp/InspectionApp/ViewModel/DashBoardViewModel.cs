@@ -27,6 +27,7 @@ namespace InspectionApp.ViewModel
         WebServiceManager webServiceManager;
         Command _AddNewInspection, _InspectionList;
         int UserRoleId;
+        public static Boolean CheckNewInspection = false;
         public Command AddNewInspection
         {
             get
@@ -86,6 +87,7 @@ namespace InspectionApp.ViewModel
         }
         public async void AddNew_Command()
         {
+            CheckNewInspection = true;
             if (UserRoleId == (int)ConfigurationCommon.UserRole.Administrator)
             {
                 var parameters = new NavigationParameters();
@@ -99,7 +101,7 @@ namespace InspectionApp.ViewModel
         }
         public async void Inspection_List()
         {
-
+            CheckNewInspection = false;
             if (UserRoleId == (int)ConfigurationCommon.UserRole.Administrator)
             {
                 await _navigationService.NavigateAsync("InspectionListPage");

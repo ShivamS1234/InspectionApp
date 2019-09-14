@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InspectionApp.View.AddNewInspectionPage" xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" xmlns:local="clr-namespace:InspectionApp.Helpers;" xmlns:localConverter="clr-namespace:InspectionApp.Converter;" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InspectionApp.View.AddNewInspectionPage" xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" xmlns:local="clr-namespace:InspectionApp.Helpers;" xmlns:localConverter="clr-namespace:InspectionApp.Converter;" xmlns:controls="clr-namespace:InspectionApp.CustomControls;" Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="ButtonStyle" TargetType="Button">
@@ -67,17 +67,17 @@
                     </Frame>
                 </StackLayout>
             </Grid>
-            <StackLayout Grid.Row="0" Margin="0" Padding="0" IsVisible="{Binding IsEditHeader}" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+            <StackLayout Grid.Row="0" Margin="0" Padding="0" IsVisible="{Binding IsView}" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
                 <Frame Padding="0">
                     <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                        <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
+                        <Image Source="ViewIcon.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
                         <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="View Inspection Details" />
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ClearCommand}" />
+                            <TapGestureRecognizer Command="{Binding ViewCommand}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ClearCommand}" />
+                        <TapGestureRecognizer Command="{Binding ViewCommand}" />
                     </Frame.GestureRecognizers>
                 </Frame>
             </StackLayout>
@@ -208,6 +208,7 @@
         </Grid>
     </ContentPage.Content>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="iconsEdit.png" Text="Edit" IsEnabled="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
+        <controls:BindableToolbarItem Icon="iconsEdit.png" IsVisible="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
+        <controls:BindableToolbarItem Text="{Binding ToolboxText}" IsVisible="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
     </ContentPage.ToolbarItems>
 </ContentPage>

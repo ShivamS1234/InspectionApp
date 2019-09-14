@@ -14,7 +14,7 @@ namespace InspectionApp.ViewModel
 {
     public class AddNewInspectionViewModel : BaseViewModel
     {
-        public Command _DetailsList, _ClearCommand, _EditCommand;
+        public Command _DetailsList, _ClearCommand, _EditCommand, _ViewCommand;
         INavigationService _navigationService;
         WebServiceManager webServiceManager;
         InspectionHeaderModel _InspectionHeader;
@@ -35,6 +35,12 @@ namespace InspectionApp.ViewModel
         {
             get { return _Invoice; }
             set { SetProperty(ref _Invoice, value); }
+        }
+        private string _toolboxText = "Edit";
+        public string ToolboxText
+        {
+            get { return _toolboxText; }
+            set { SetProperty(ref _toolboxText, value); }
         }
         private IList<Product> _ProductList;
         public IList<Product> ProductList
@@ -114,6 +120,12 @@ namespace InspectionApp.ViewModel
             get { return _IsEditable; }
             set { SetProperty(ref _IsEditable, value); }
         }
+        private Boolean _IsView = true;
+        public Boolean IsView
+        {
+            get { return _IsView; }
+            set { SetProperty(ref _IsView, value); }
+        }
         private PalletCondition _SelectedPalletizingCondition;
         public PalletCondition SelectedPalletizingCondition
         {
@@ -141,6 +153,7 @@ namespace InspectionApp.ViewModel
                         {
                             IsEditHeader = false;
                             IsEditable = true;
+                            IsView = false;
                         }
                     }
                     if (parameters.ContainsKey("InspectionHeader"))
@@ -172,6 +185,8 @@ namespace InspectionApp.ViewModel
                 UserDialogs.Instance.HideLoading();
             }
         }
+
+        #region Declare_Command
         public Command DetailsList
         {
             get
@@ -193,6 +208,15 @@ namespace InspectionApp.ViewModel
                 return _EditCommand ?? (_EditCommand = new Command(async () => Edit_Command()));
             }
         }
+        public Command ViewCommand
+        {
+            get
+            {
+                return _ViewCommand ?? (_ViewCommand = new Command(async () => View_Command()));
+            }
+        }
+        #endregion
+
         public async void AddNew_Command()
         {
             if (SelectedCompany == null)
@@ -264,9 +288,24 @@ namespace InspectionApp.ViewModel
                     var result = await webServiceManager.RegistrationInspectionHeaderAsync(inspectionHeaderRequestDTO).ConfigureAwait(true); ;
                     if (result.IsSuccess && result.Data.StatusCode == 0)
                     {
+                        await App.Current.MainPage.DisplayAlert("Alert", "Inspection Header has been Saved!", "ok");
+                        int InspectionID = _InspectionHeader != null ? _InspectionHeader.Id : 0;
                         var parameters = new NavigationParameters();
-                        parameters.Add("HeaderID", result.Data.Id);
-                        await _navigationService.NavigateAsync("InspectionDetailsListPage", parameters);
+                        if (InspectionID > 0)
+                        {
+                            parameters.Add("HeaderID", result.Data.Id);
+                            await _navigationService.NavigateAsync("InspectionDetailsListPage", parameters);
+                        }
+                        else
+                        {
+                            UserDialogs.Instance.ShowLoading();
+                            parameters.Add("HeaderID", result.Data.Id);
+                            parameters.Add("ScreenRight", "New Detail Inspection");
+                            await _navigationService.NavigateAsync("AddNewDetailsInspectionPage", parameters);
+                            UserDialogs.Instance.HideLoading();
+
+                        }
+
                     }
                     else
                     {
@@ -307,7 +346,24 @@ namespace InspectionApp.ViewModel
         public async void Edit_Command()
         {
             IsEditable = !IsEditable;
-            IsEditHeader = !IsEditHeader;
+            IsView = !IsView;
+            if (IsView)
+            {
+                ToolboxText = "Edit";
+            }
+            else
+            {
+                ToolboxText = "Cancel";
+            }
+        }
+        public async void View_Command()
+        {
+            if (_InspectionHeader != null && _InspectionHeader.Id > 0)
+            {
+                var parameters = new NavigationParameters();
+                parameters.Add("HeaderID", _InspectionHeader.Id);
+                await _navigationService.NavigateAsync("InspectionDetailsListPage", parameters);
+            }
         }
     }
 }

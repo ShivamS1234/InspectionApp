@@ -259,8 +259,16 @@ namespace InspectionApp.ViewModel
                     var result = await webServiceManager.RegistrationInspectionDetailsAsync(inspectionRequestDTO).ConfigureAwait(true); ;
                     if (result.IsSuccess && result.Data.StatusCode == 0)
                     {
-                        //await navigationService.NavigateAsync("LoginPage");
-                        await _navigationService.GoBackAsync();
+                        await App.Current.MainPage.DisplayAlert("Alert", "Inspection Details has been Saved!", "ok");
+
+                        if (DashBoardViewModel.CheckNewInspection)
+                        {
+                            await _navigationService.GoBackToRootAsync();
+                        }
+                        else
+                        {
+                            await _navigationService.GoBackAsync();
+                        }
                     }
                     else
                     {
