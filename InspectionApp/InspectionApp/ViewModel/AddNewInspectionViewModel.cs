@@ -5,7 +5,7 @@ using Acr.UserDialogs;
 using Inspection.Resouces.DTO.Request;
 using Inspection.Resouces.Entites;
 using InspectionApp.Helpers;
-using InspectionApp.Model;
+//using InspectionApp.Model;
 using InspectionApp.WebServices;
 using Prism.Navigation;
 using Xamarin.Forms;
@@ -17,7 +17,7 @@ namespace InspectionApp.ViewModel
         public Command _DetailsList, _ClearCommand, _EditCommand, _ViewCommand;
         INavigationService _navigationService;
         WebServiceManager webServiceManager;
-        InspectionHeaderModel _InspectionHeader;
+        InspectionApp.Model.InspectionHeaderModel _InspectionHeader;
         private IList<Company> _CompiniesList;
         public IList<Company> CompiniesList
         {
@@ -158,7 +158,7 @@ namespace InspectionApp.ViewModel
                     }
                     if (parameters.ContainsKey("InspectionHeader"))
                     {
-                        _InspectionHeader = parameters["InspectionHeader"] as InspectionHeaderModel;
+                        _InspectionHeader = parameters["InspectionHeader"] as InspectionApp.Model.InspectionHeaderModel;
                         if (_InspectionHeader != null)
                         {
                             SelectedCompany = InitData.CmpList.Where(x => x.Id == _InspectionHeader.CompanyId).FirstOrDefault();

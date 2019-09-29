@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using Inspection.Resouces.DTO.Request;
+using InspectionApp.Database;
 using InspectionApp.View;
 using InspectionApp.ViewModel;
 using InspectionApp.WebServices;
@@ -8,6 +9,7 @@ using Prism.DryIoc;
 using Prism.Ioc;
 using System;
 using System.Diagnostics;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -19,6 +21,7 @@ namespace InspectionApp
         public static double ScreenHeight;
         public static double ScreenWidth;
         public static bool IsInDevelopment = false;
+        static InspectionAppDatabase database;
         #region Notification
         public static bool IsActiveNotification { get; set; }
         public static bool IsActiveApp { get; set; }
@@ -70,5 +73,19 @@ namespace InspectionApp
             containerRegistry.RegisterForNavigation<InspectionDetailsListPage, InspectionDetailsListViewModel>();
             containerRegistry.RegisterForNavigation<AddNewDetailsInspectionPage, AddNewDetailInspectionViewModel>();
         }
+
+        #region databse
+        public static InspectionAppDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new InspectionAppDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "InspectionAppDatabase.db3"));
+                }
+                return database;
+            }
+        }
+        #endregion
     }
 }
