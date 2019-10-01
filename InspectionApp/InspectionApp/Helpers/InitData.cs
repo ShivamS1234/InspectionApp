@@ -11,6 +11,7 @@ namespace InspectionApp.Helpers
 {
   public static class InitData
   {
+    #region propertise
     static int CompanyId;
     static WebServiceManager webServiceManager = new WebServiceManager();
     public static List<WarehouseDetails> WarehouseList
@@ -78,7 +79,9 @@ namespace InspectionApp.Helpers
       get;
       set;
     }
+    #endregion
 
+    #region method
 
     public static async void GetAllInitData()
     {
@@ -183,5 +186,6 @@ namespace InspectionApp.Helpers
       }
     }
 
+    #endregion
   }
 }
