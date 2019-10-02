@@ -75,8 +75,8 @@ namespace InspectionApp.ViewModel
             LoginCommand = new Command(async () => Login_Command());
             ForgetCommand = new Command(async () => Forget_Command());
             RegisterCommand = new Command(async () => Register_Command());
-            //UserId = "Shivammcu@gmail.com";
-            //Password = "Shivam@1234";
+            UserId = "test@gmail.com";
+            Password = "test@1234";
             if (IsSwitchedToggled)
             {
                 if (!string.IsNullOrEmpty(UserId) && !string.IsNullOrEmpty(Password))

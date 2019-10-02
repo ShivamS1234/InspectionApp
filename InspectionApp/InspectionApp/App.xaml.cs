@@ -21,7 +21,7 @@ namespace InspectionApp
         public static double ScreenHeight;
         public static double ScreenWidth;
         public static bool IsInDevelopment = false;
-        static InspectionAppDatabase database;
+        static InspectionAppDatabase<Entity> database;
         #region Notification
         public static bool IsActiveNotification { get; set; }
         public static bool IsActiveApp { get; set; }
@@ -75,13 +75,13 @@ namespace InspectionApp
         }
 
         #region databse
-        public static InspectionAppDatabase Database
+        public static InspectionAppDatabase<Entity> Database
         {
             get
             {
                 if (database == null)
                 {
-                    database = new InspectionAppDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "InspectionAppDatabase.db3"));
+                    database = new InspectionAppDatabase<Entity>(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "InspectionAppDatabase.db3"));
                 }
                 return database;
             }

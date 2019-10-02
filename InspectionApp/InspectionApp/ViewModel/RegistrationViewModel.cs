@@ -9,6 +9,7 @@ using Prism.Navigation;
 using Xamarin.Forms;
 using Inspection.Resouces.Entites;
 using InspectionApp.Helpers;
+using InspectionApp.Database;
 
 namespace InspectionApp.ViewModel
 {
@@ -187,6 +188,8 @@ namespace InspectionApp.ViewModel
                 var resultApplication = await webServiceManager.GetCompaniesbyAppIdAsync(companiesRequestDTO).ConfigureAwait(true); ;
                 CompiniesList = resultApplication.Data.Companies;
 
+                App1.Database.DeleteAllAsync<Company>();
+                App1.Database.BulkSaveCompanies(CompiniesList); // for cmp data saving
             }
             catch (Exception ex)
             {

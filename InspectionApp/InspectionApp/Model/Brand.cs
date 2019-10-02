@@ -1,17 +1,11 @@
 ﻿using System;
+using InspectionApp.Database;
 using SQLite;
 
 namespace InspectionApp.Model
 {
-    public class Brand
+    public class Brand : Entity
     {
-        [PrimaryKey]
-        public int Id
-        {
-            get;
-            set;
-        }
-
         public string BrandName
         {
             get;
