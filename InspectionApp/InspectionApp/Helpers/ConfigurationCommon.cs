@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace InspectionApp.Helpers
 {
@@ -20,5 +21,17 @@ namespace InspectionApp.Helpers
       { "Size Desp", "Weight","Temperature", "QualityScore" };
     public static List<string> DeleteArray = new List<string>()
         {"sure! you want to delete this?", "Delete","Okay", "Cancel" };
+
+    public static bool App_Online
+    {
+      get
+      {
+        //var current = Connectivity.NetworkAccess;
+        //if (current == NetworkAccess.Internet)
+        //  return true;
+        //else
+        return false;
+      }
+    }
   }
 }

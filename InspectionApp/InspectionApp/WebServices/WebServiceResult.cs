@@ -20,14 +20,12 @@ namespace InspectionApp.WebServices
       {
         return Status == "Success" ? true : false;
       }
-
     }
 
     public WebServiceResult()
     {
 
     }
-
   }
   public class WebServiceResult<TData> : WebServiceResult, IWebServiceResult<TData>
   {
