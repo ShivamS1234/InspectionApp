@@ -1,35 +1,30 @@
 ﻿using System;
+using InspectionApp.Database;
 using SQLite;
 
 namespace InspectionApp.Model
 {
 
-    public class UserRole
+  public class UserRole : Entity
+  {
+
+    public string UserRoleName
     {
-        [PrimaryKey]
-        public int Id
-        {
-            get;
-            set;
-        }
-
-        public string UserRoleName
-        {
-            get;
-            set;
-        }
-
-        public bool IsActive
-        {
-            get;
-            set;
-        }
-
-        public int CompanyId
-        {
-            get;
-            set;
-        }
+      get;
+      set;
     }
+
+    public bool IsActive
+    {
+      get;
+      set;
+    }
+
+    public int CompanyId
+    {
+      get;
+      set;
+    }
+  }
 
 }

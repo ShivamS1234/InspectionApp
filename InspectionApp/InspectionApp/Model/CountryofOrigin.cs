@@ -1,27 +1,21 @@
 ﻿using System;
+using InspectionApp.Database;
 using SQLite;
 
 namespace InspectionApp.Model
 {
-    public class CountryofOrigin
+  public class CountryofOrigin : Entity
+  {
+    public string CountryName
     {
-        [PrimaryKey]
-        public int Id
-        {
-            get;
-            set;
-        }
-
-        public string CountryName
-        {
-            get;
-            set;
-        }
-
-        public int CompanyId
-        {
-            get;
-            set;
-        }
+      get;
+      set;
     }
+
+    public int CompanyId
+    {
+      get;
+      set;
+    }
+  }
 }

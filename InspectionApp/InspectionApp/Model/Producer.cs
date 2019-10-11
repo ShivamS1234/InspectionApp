@@ -1,26 +1,20 @@
 ﻿using System;
-using SQLite;
+using InspectionApp.Database;
 
 namespace InspectionApp.Model
 {
-    public class Producer
-    {
-        [PrimaryKey]
-        public int Id
-        {
-            get;
-            set;
-        }
+  public class Producer : Entity
+  {
 
-        public string ProducerName
-        {
-            get;
-            set;
-        }
-        public int CompanyId
-        {
-            get;
-            set;
-        }
+    public string ProducerName
+    {
+      get;
+      set;
     }
+    public int CompanyId
+    {
+      get;
+      set;
+    }
+  }
 }

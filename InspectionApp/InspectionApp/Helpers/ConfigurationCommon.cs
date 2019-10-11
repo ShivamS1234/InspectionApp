@@ -26,11 +26,11 @@ namespace InspectionApp.Helpers
     {
       get
       {
-        //var current = Connectivity.NetworkAccess;
-        //if (current == NetworkAccess.Internet)
-        //  return true;
-        //else
-        return false;
+        var current = Connectivity.NetworkAccess;
+        if (current == NetworkAccess.Internet)
+          return true;
+        else
+          return false;
       }
     }
   }

@@ -1,214 +1,214 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="InspectionApp.View.AddNewInspectionPage" xmlns:localBehavior="clr-namespace:Behavior" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" xmlns:local="clr-namespace:InspectionApp.Helpers;" xmlns:localConverter="clr-namespace:InspectionApp.Converter;" xmlns:controls="clr-namespace:InspectionApp.CustomControls;" Title="{Binding Title}">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <Style x:Key="ButtonStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="#183A7A" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="CornerRadius" Value="20" />
-            </Style>
-            <Style TargetType="Editor">
-                <Setter Property="BackgroundColor" Value="#FAFAFA" />
-            </Style>
-            <Style TargetType="Picker">
-                <Setter Property="BackgroundColor" Value="#FAFAFA" />
-            </Style>
-            <Style TargetType="Entry">
-                <Setter Property="BackgroundColor" Value="#FAFAFA" />
-            </Style>
-            <Color x:Key="primaryColor">#183A7A</Color>
-            <localConverter:IntToStringConverter x:Key="IntToString" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Content>
-        <Grid Padding="20" Visual="Material" BackgroundColor="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid BackgroundColor="Silver" IsVisible="{Binding IsEditable}" Grid.Row="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="350" />
-                </Grid.ColumnDefinitions>
-                <StackLayout Grid.Row="0" Grid.Column="0" Padding="20">
-                    <Label Visual="Material" FontSize="Medium" Text="Create New Inspection" />
-                    <Label Visual="Material" FontSize="Medium" Text="Fields marked with * are mandatory" />
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="1" Margin="0" Padding="0" HorizontalOptions="End" Orientation="Horizontal">
-                    <Frame Padding="0">
-                        <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                            <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
-                            <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ClearCommand}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ClearCommand}" />
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                    <Frame Padding="0" HorizontalOptions="End">
-                        <StackLayout BackgroundColor="{StaticResource primaryColor}" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                            <Image Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
-                            <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DetailsList}" />
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding DetailsList}" NumberOfTapsRequired="1" />
-                        </Frame.GestureRecognizers>
-                    </Frame>
-                </StackLayout>
-            </Grid>
-            <StackLayout Grid.Row="0" Margin="0" Padding="0" IsVisible="{Binding IsView}" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <Frame Padding="0">
-                    <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
-                        <Image Source="ViewIcon.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
-                        <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="View Inspection Details" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ViewCommand}" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ViewCommand}" />
-                    </Frame.GestureRecognizers>
-                </Frame>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style x:Key="ButtonStyle" TargetType="Button">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#183A7A" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="CornerRadius" Value="20" />
+      </Style>
+      <Style TargetType="Editor">
+        <Setter Property="BackgroundColor" Value="#FAFAFA" />
+      </Style>
+      <Style TargetType="Picker">
+        <Setter Property="BackgroundColor" Value="#FAFAFA" />
+      </Style>
+      <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="#FAFAFA" />
+      </Style>
+      <Color x:Key="primaryColor">#183A7A</Color>
+      <localConverter:IntToStringConverter x:Key="IntToString" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.Content>
+    <Grid Padding="20" Visual="Material" BackgroundColor="White">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="90" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+      <Grid BackgroundColor="Silver" IsVisible="{Binding IsEditable}" Grid.Row="0">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="350" />
+        </Grid.ColumnDefinitions>
+        <StackLayout Grid.Row="0" Grid.Column="0" Padding="20">
+          <Label Visual="Material" FontSize="Medium" Text="Create New Inspection" />
+          <Label Visual="Material" FontSize="Medium" Text="Fields marked with * are mandatory" />
+        </StackLayout>
+        <StackLayout Grid.Row="0" Grid.Column="1" Margin="0" Padding="0" HorizontalOptions="End" Orientation="Horizontal">
+          <Frame Padding="0">
+            <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
+              <Image Source="delete.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
+              <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Clear All" />
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ClearCommand}" />
+              </StackLayout.GestureRecognizers>
             </StackLayout>
-            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" BackgroundColor="White">
-                <StackLayout VerticalOptions="FillAndExpand">
-                    <TableView Intent="Settings" HasUnevenRows="true">
-                        <TableRoot>
-                            <TableSection Title="Header Inspection">
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Company Name" WidthRequest="200" VerticalTextAlignment="Center" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid Visual="Material" IsEnabled="{Binding IsEditable}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.CmpList}" ItemDisplayBinding="{Binding CompanyName}" SelectedItem="{Binding SelectedCompany}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Invoice" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Invoice" Text="{Binding Invoice}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Product Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid Visual="Material" IsEnabled="{Binding IsEditable}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Picker Visual="Material" ItemsSource="{x:Static local:InitData.ProductList}" ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProduct}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Variety Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Picker Visual="Material" ItemsSource="{x:Static local:InitData.VarietyList}" ItemDisplayBinding="{Binding VarietyName}" SelectedItem="{Binding SelectedVariety}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Brand Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.BrandList}" ItemDisplayBinding="{Binding BrandName}" SelectedItem="{Binding SelectedBrand}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Country of Origin" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.CountryofOriginList}" ItemDisplayBinding="{Binding CountryName}" SelectedItem="{Binding SelectedCountryofOrigin}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Total Box Quantities" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Total Box Quantities" Text="{Binding TotalBoxQua,Converter={StaticResource IntToString}}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Temp On Caja" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Temp On Caja" Text="{Binding TempOnCaja,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Temp On Termografo" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Temp On Termografo" Text="{Binding TempOnTermografo,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                    </StackLayout>
-                                </ViewCell>
-                                <ViewCell>
-                                    <StackLayout Padding="15" Orientation="Horizontal">
-                                        <Label Visual="Material" Text="Palletizing Condition" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
-                                        <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.PalletConditionList}" ItemDisplayBinding="{Binding PalletConditionName}" SelectedItem="{Binding SelectedPalletizingCondition}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                                            <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
-                                        </Grid>
-                                    </StackLayout>
-                                </ViewCell>
-                            </TableSection>
-                        </TableRoot>
-                    </TableView>
-                </StackLayout>
-            </ScrollView>
-        </Grid>
-    </ContentPage.Content>
-    <ContentPage.ToolbarItems>
-        <controls:BindableToolbarItem Icon="iconsEdit.png" IsVisible="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
-        <controls:BindableToolbarItem Text="{Binding ToolboxText}" IsVisible="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
-    </ContentPage.ToolbarItems>
+            <Frame.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding ClearCommand}" />
+            </Frame.GestureRecognizers>
+          </Frame>
+          <Frame Padding="0" HorizontalOptions="End">
+            <StackLayout BackgroundColor="{StaticResource primaryColor}" Orientation="Horizontal" Grid.Row="0" Padding="20">
+              <Image Source="done.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
+              <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="Submit " HorizontalOptions="End" />
+              <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding DetailsList}" />
+              </StackLayout.GestureRecognizers>
+            </StackLayout>
+            <Frame.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding DetailsList}" NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+          </Frame>
+        </StackLayout>
+      </Grid>
+      <StackLayout Grid.Row="0" Margin="0" Padding="0" IsVisible="{Binding IsView}" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+        <Frame Padding="0">
+          <StackLayout BackgroundColor="#46A0C5" Orientation="Horizontal" Grid.Row="0" Padding="20">
+            <Image Source="ViewIcon.png" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" />
+            <Label FontSize="Large" TextColor="White" VerticalOptions="Center" Text="View Inspection Details" />
+            <StackLayout.GestureRecognizers>
+              <TapGestureRecognizer Command="{Binding ViewCommand}" />
+            </StackLayout.GestureRecognizers>
+          </StackLayout>
+          <Frame.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding ViewCommand}" />
+          </Frame.GestureRecognizers>
+        </Frame>
+      </StackLayout>
+      <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand" VerticalScrollBarVisibility="Always" BackgroundColor="White">
+        <StackLayout VerticalOptions="FillAndExpand">
+          <TableView Intent="Settings" HasUnevenRows="true">
+            <TableRoot>
+              <TableSection Title="Header Inspection">
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Company Name" WidthRequest="200" VerticalTextAlignment="Center" TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid Visual="Material" IsEnabled="{Binding IsEditable}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.CmpList}" ItemDisplayBinding="{Binding CompanyName}" SelectedItem="{Binding SelectedCompany}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Invoice" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Invoice" Text="{Binding Invoice}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Product Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid Visual="Material" IsEnabled="{Binding IsEditable}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Picker Visual="Material" ItemsSource="{x:Static local:InitData.ProductList}" ItemDisplayBinding="{Binding ProductName}" SelectedItem="{Binding SelectedProduct}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Variety Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Picker Visual="Material" ItemsSource="{x:Static local:InitData.VarietyList}" ItemDisplayBinding="{Binding VarietyName}" SelectedItem="{Binding SelectedVariety}" Grid.Row="0" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Brand Name" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.BrandList}" ItemDisplayBinding="{Binding BrandName}" SelectedItem="{Binding SelectedBrand}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Country of Origin" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.CountryofOriginList}" ItemDisplayBinding="{Binding CountryName}" SelectedItem="{Binding SelectedCountryofOrigin}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Total Box Quantities" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Total Box Quantities" Text="{Binding TotalBoxQua,Converter={StaticResource IntToString}}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Temp On Caja" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Temp On Caja" Text="{Binding TempOnCaja,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Temp On Termografo" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Entry Visual="Material" IsEnabled="{Binding IsEditable}" Placeholder="Temp On Termografo" Text="{Binding TempOnTermografo,Converter={StaticResource IntToString},ConverterParameter=Decimal}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                  </StackLayout>
+                </ViewCell>
+                <ViewCell>
+                  <StackLayout Padding="15" Orientation="Horizontal">
+                    <Label Visual="Material" Text="Palletizing Condition" WidthRequest="200" TextColor="#7C7C7C" FontSize="Large" />
+                    <Grid HorizontalOptions="FillAndExpand" IsEnabled="{Binding IsEditable}" BackgroundColor="Transparent">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                      </Grid.RowDefinitions>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                      </Grid.ColumnDefinitions>
+                      <Picker Visual="Material" Grid.Row="0" ItemsSource="{x:Static local:InitData.PalletConditionList}" ItemDisplayBinding="{Binding PalletConditionName}" SelectedItem="{Binding SelectedPalletizingCondition}" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+                      <Image Visual="Material" Grid.Row="0" WidthRequest="40" HeightRequest="40" HorizontalOptions="End" VerticalOptions="Start" Source="search.png" />
+                    </Grid>
+                  </StackLayout>
+                </ViewCell>
+              </TableSection>
+            </TableRoot>
+          </TableView>
+        </StackLayout>
+      </ScrollView>
+    </Grid>
+  </ContentPage.Content>
+  <ContentPage.ToolbarItems>
+    <controls:BindableToolbarItem Icon="iconsEdit.png" IsVisible="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
+    <controls:BindableToolbarItem Text="{Binding ToolboxText}" IsVisible="{Binding IsEditHeader}" Command="{Binding EditCommand}" />
+  </ContentPage.ToolbarItems>
 </ContentPage>

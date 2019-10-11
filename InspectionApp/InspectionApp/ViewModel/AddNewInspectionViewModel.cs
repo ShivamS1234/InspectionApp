@@ -271,18 +271,18 @@ namespace InspectionApp.ViewModel
             InspectionDate = DateTime.Now,
             UserId = Convert.ToInt32(RememberMe.Get("userID")),
             Invoice = Invoice,
-            ProducerId = SelectedProduct.Id,
+            ProducerId = (int)SelectedProduct.Id,
             //ProducerId = SelectedProduct.Id,
             //VarietyId = 7,
-            VarietyId = SelectedVariety.Id,
+            VarietyId = (int)SelectedVariety.Id,
             //BrandId = 8,
             BrandId = (int)SelectedBrand.Id,
             //CountryofOriginId = 9,
-            CountryofOriginId = SelectedCountryofOrigin.Id,
+            CountryofOriginId = (int)SelectedCountryofOrigin.Id,
             TotalBoxQuantities = TotalBoxQua,
             TempOnCaja = TempOnCaja,
             TempOnTermografo = TempOnTermografo,
-            PalletizingConditionId = SelectedPalletizingCondition.Id,
+            PalletizingConditionId = (int)SelectedPalletizingCondition.Id,
 
           };
           var result = await webServiceManager.RegistrationInspectionHeaderAsync(inspectionHeaderRequestDTO).ConfigureAwait(true); ;

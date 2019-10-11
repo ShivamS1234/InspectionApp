@@ -166,7 +166,9 @@ namespace InspectionApp.ViewModel
         }
         else
         {
+          RememberMe.Set("isSwitchedToggled", IsSwitchedToggled);
           await _navigationService.NavigateAsync("DashboardPage");
+          await Xamarin.Forms.Application.Current.SavePropertiesAsync();
         }
       }
     }

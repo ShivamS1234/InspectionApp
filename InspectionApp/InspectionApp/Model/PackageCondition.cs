@@ -1,17 +1,11 @@
 using System;
+using InspectionApp.Database;
 using SQLite;
 
 namespace InspectionApp.Model
 {
-  public class PackageCondition
+  public class PackageCondition : Entity
   {
-    [PrimaryKey]
-    public int Id
-    {
-      get;
-      set;
-    }
-
     public string PackageConditionName
     {
       get;

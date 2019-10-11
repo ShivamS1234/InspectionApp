@@ -1,27 +1,21 @@
 ﻿using System;
+using InspectionApp.Database;
 using SQLite;
 
 namespace InspectionApp.Model
 {
-    public class PalletCondition
+  public class PalletCondition : Entity
+  {
+    public string PalletConditionName
     {
-        [PrimaryKey]
-        public int Id
-        {
-            get;
-            set;
-        }
-
-        public string PalletConditionName
-        {
-            get;
-            set;
-        }
-
-        public int CompanyId
-        {
-            get;
-            set;
-        }
+      get;
+      set;
     }
+
+    public int CompanyId
+    {
+      get;
+      set;
+    }
+  }
 }

@@ -7,6 +7,10 @@ using Inspection.Resouces.Entites.CustomModel;
 using Acr.UserDialogs;
 using Inspection.Resouces.Entites;
 using InspectionApp.Database;
+using System.Collections.ObjectModel;
+using InspectionApp.Model;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace InspectionApp.Helpers
 {
@@ -31,61 +35,73 @@ namespace InspectionApp.Helpers
       set;
     }
     public static IDatabaseService<Model.Company> CmpRepo => new InspectionAppDatabase<Model.Company>(App1.DBPath);
-    public static IList<InspectionApp.Model.Company> CmpList
+    public static ObservableCollection<InspectionApp.Model.Company> CmpList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.Brand> BranRepo => new InspectionAppDatabase<Model.Brand>(App1.DBPath);
-    public static IList<Model.Brand> BrandList
+    public static ObservableCollection<Model.Brand> BrandList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.CountryofOrigin> CountryOriginRepo => new InspectionAppDatabase<Model.CountryofOrigin>(App1.DBPath);
-    public static IList<Model.CountryofOrigin> CountryofOriginList
+    public static ObservableCollection<Model.CountryofOrigin> CountryofOriginList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.OpeningApperence> OpeningApperenceRepo => new InspectionAppDatabase<Model.OpeningApperence>(App1.DBPath);
-    public static IList<Model.OpeningApperence> OpeningApperenceList
+    public static ObservableCollection<Model.OpeningApperence> OpeningApperenceList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.PackageCondition> PackageConditionRepo => new InspectionAppDatabase<Model.PackageCondition>(App1.DBPath);
-    public static IList<Model.PackageCondition> PackageConditionList
+    public static ObservableCollection<Model.PackageCondition> PackageConditionList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.PalletCondition> PalletRepo => new InspectionAppDatabase<Model.PalletCondition>(App1.DBPath);
-    public static IList<Model.PalletCondition> PalletConditionList
+    public static ObservableCollection<Model.PalletCondition> PalletConditionList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.Producer> ProducerRepo => new InspectionAppDatabase<Model.Producer>(App1.DBPath);
-    public static IList<Model.Producer> ProducerList
+    public static ObservableCollection<Model.Producer> ProducerList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.Product> ProductRepo => new InspectionAppDatabase<Model.Product>(App1.DBPath);
-    public static IList<Model.Product> ProductList
+    public static ObservableCollection<Model.Product> ProductList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.SizeTb> SizeRepo => new InspectionAppDatabase<Model.SizeTb>(App1.DBPath);
-    public static IList<Model.SizeTb> SizeTbList
+    public static ObservableCollection<Model.SizeTb> SizeTbList
     {
       get;
       set;
     }
     public static IDatabaseService<Model.Variety> VarietyRepo => new InspectionAppDatabase<Model.Variety>(App1.DBPath);
-    public static IList<Model.Variety> VarietyList
+    public static ObservableCollection<Model.Variety> VarietyList
+    {
+      get;
+      set;
+    }
+    public static IDatabaseService<InspectionHeaderTable> HeaderRepo => new InspectionAppDatabase<InspectionHeaderTable>(App1.DBPath);
+    public static ObservableCollection<InspectionHeaderTable> InspectionHeaderList
+    {
+      get;
+      set;
+    }
+    public static IDatabaseService<InspectionDetailTable> DetailsRepo => new InspectionAppDatabase<InspectionDetailTable>(App1.DBPath);
+    public static ObservableCollection<InspectionDetailTable> InspectionDetailsList
     {
       get;
       set;
@@ -99,17 +115,18 @@ namespace InspectionApp.Helpers
       try
       {
         UserDialogs.Instance.ShowLoading("Going for Databse Setup...");
-
-        CmpList = new List<Model.Company>();
-        BrandList = new List<Model.Brand>();
-        CountryofOriginList = new List<Model.CountryofOrigin>();
-        OpeningApperenceList = new List<Model.OpeningApperence>();
-        PackageConditionList = new List<Model.PackageCondition>();
-        PalletConditionList = new List<Model.PalletCondition>();
-        ProducerList = new List<Model.Producer>();
-        ProductList = new List<Model.Product>();
-        SizeTbList = new List<Model.SizeTb>();
-        VarietyList = new List<Model.Variety>();
+        CmpList = new ObservableCollection<Model.Company>();
+        BrandList = new ObservableCollection<Model.Brand>();
+        CountryofOriginList = new ObservableCollection<Model.CountryofOrigin>();
+        OpeningApperenceList = new ObservableCollection<Model.OpeningApperence>();
+        PackageConditionList = new ObservableCollection<Model.PackageCondition>();
+        PalletConditionList = new ObservableCollection<Model.PalletCondition>();
+        ProducerList = new ObservableCollection<Model.Producer>();
+        ProductList = new ObservableCollection<Model.Product>();
+        SizeTbList = new ObservableCollection<Model.SizeTb>();
+        VarietyList = new ObservableCollection<Model.Variety>();
+        InspectionHeaderList = new ObservableCollection<InspectionHeaderTable>();
+        InspectionDetailsList = new ObservableCollection<InspectionDetailTable>();
 
         if (ConfigurationCommon.App_Online)
         {
@@ -274,6 +291,7 @@ namespace InspectionApp.Helpers
               await VarietyRepo.InsertAll(VarietyList);
             }
           }
+          await SyncHeaderDetails();
         }
         else
         {
@@ -343,10 +361,86 @@ namespace InspectionApp.Helpers
       catch (Exception ex)
       {
         UserDialogs.Instance.HideLoading();
-        Console.WriteLine(ex.Message);
+        Console.WriteLine("Error in Master Data Sync: " + ex.Message);
         throw ex;
       }
     }
+
+    #region Save_HeaderAndDetails_Data
+    static async Task SyncHeaderDetails()
+    {
+      InspectionHeadersRequestDTO headerRequestDTO = new InspectionHeadersRequestDTO()
+      {
+        CompanyId = Convert.ToInt32(RememberMe.Get("CmpID")),
+        UserId = Convert.ToInt32(RememberMe.Get("userID")),
+      };
+      var result = await webServiceManager.GetHeaderbyID(headerRequestDTO).ConfigureAwait(true);
+      if (result.IsSuccess)
+      {
+        if (result.Data.InspectionHeader != null && result.Data.InspectionHeader.Count > 0)
+        {
+          InspectionHeaderList = new ObservableCollection<InspectionHeaderTable>();
+          foreach (var data in result.Data.InspectionHeader)
+          {
+            InspectionHeaderList.Add(new InspectionHeaderTable
+            {
+              Id = data.Id,
+              CompanyId = data.CompanyId,
+              InspectionDate = data.InspectionDate,
+              UserId = data.UserId,
+              Invoice = data.Invoice,
+              ProducerId = data.ProducerId,
+              VarietyId = data.VarietyId,
+              BrandId = data.BrandId,
+              CountryofOriginId = data.CountryofOriginId,
+              TotalBoxQuantities = data.TotalBoxQuantities,
+              TempOnCaja = data.TempOnCaja,
+              TempOnTermografo = data.TempOnTermografo,
+              PalletizingConditionId = data.PalletizingConditionId,
+            });
+          }
+        }
+        await HeaderRepo.DeleteAllAsync<InspectionHeaderTable>();
+        await HeaderRepo.InsertAll(InspectionHeaderList);
+
+        var resultDetails = await webServiceManager.GetHeaderDetailsAll().ConfigureAwait(true);
+        if (resultDetails.IsSuccess)
+        {
+          if (resultDetails.Data.InspectionDetail != null && resultDetails.Data.InspectionDetail.Count > 0)
+          {
+            InspectionDetailsList = new ObservableCollection<InspectionDetailTable>();
+            foreach (var data in resultDetails.Data.InspectionDetail)
+            {
+              InspectionDetailsList.Add(new InspectionDetailTable
+              {
+                Id = data.Id,
+                InspectionHeaderId = data.InspectionHeaderId,
+                SizeId = data.SizeId,
+                SampleSize = data.SampleSize,
+                Weight = data.Weight,
+                PhysicalCount = data.PhysicalCount,
+                OpeningApperenceId = data.OpeningApperenceId,
+                Temperature = data.Temperature,
+                Brix = data.Brix,
+                Firmness = data.Firmness,
+                SkinDamage = data.SkinDamage,
+                Color = data.Color,
+                PackageConditionId = data.PackageConditionId,
+                Comment = data.Comment,
+                QualityScore = data.QualityScore,
+              });
+            }
+          }
+          await DetailsRepo.DeleteAllAsync<InspectionDetailTable>();
+          await DetailsRepo.InsertAll(InspectionDetailsList);
+        }
+      }
+      else
+      {
+        Console.WriteLine("Prolem in header and details sync");
+      }
+    }
+    #endregion
 
     #endregion
   }

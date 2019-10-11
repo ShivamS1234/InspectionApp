@@ -59,6 +59,7 @@ namespace InspectionApp.ViewModel
         UserRoleId = Convert.ToInt32(RememberMe.Get("UserRoleId"));
         Xamarin.Forms.Device.BeginInvokeOnMainThread(async () =>
         {
+          await Task.Delay(1000);
           InitData.GetAllInitData();
         });
       }
