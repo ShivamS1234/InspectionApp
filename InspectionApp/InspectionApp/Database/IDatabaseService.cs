@@ -7,24 +7,30 @@ using System.Collections.ObjectModel;
 
 namespace InspectionApp.Database
 {
-  public interface IDatabaseService<T> where T : class, new()
-  {
-    Task<List<T>> Get();
+    public interface IDatabaseService<T> where T : class, new()
+    {
+        Task<List<T>> Get();
 
-    Task<T> Get(int id);
+        Task<T> Get(int id);
 
-    Task<ObservableCollection<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null);
+        Task<ObservableCollection<T>> Get<TValue>(Expression<Func<T, bool>> predicate = null, Expression<Func<T, TValue>> orderBy = null);
 
-    Task<T> Get(Expression<Func<T, bool>> predicate);
+        Task<T> GetMaxCode<TValue>(Expression<Func<T, TValue>> orderBy = null, Boolean ascending = true);
 
-    AsyncTableQuery<T> AsQueryable();
+        Task<T> Get(Expression<Func<T, bool>> predicate);
 
-    Task InsertAll(IList<T> entity);
+        AsyncTableQuery<T> AsQueryable();
 
-    Task<int> Update(T entity);
+        Task InsertAll(IList<T> entity);
 
-    Task<int> DeleteAllAsync<T>();
+        Task<int> InsertItemAsync(T entity);
 
-    Task<int> Count(Expression<Func<T, bool>> predicate = null);
-  }
+        Task<int> UpdateItemAsync(T entity);
+
+        Task<int> DeleteAllAsync<T>();
+
+        Task<int> DeleteItemAsync(Expression<Func<T, bool>> predicate);
+
+        Task<int> Count(Expression<Func<T, bool>> predicate = null);
+    }
 }

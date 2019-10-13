@@ -5,104 +5,104 @@ using SQLite;
 
 namespace InspectionApp.Database
 {
-  public class Entity : INotifyPropertyChanged
-  {
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    [PrimaryKey]
-    public int? Id { get; set; }
-
-    private DateTime _createdAt;
-
-    public DateTime CreatedAt
+    public class Entity : INotifyPropertyChanged
     {
-      get { return _createdAt; }
-      set
-      {
-        if (value.Equals(_createdAt))
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [PrimaryKey]
+        public int? Id { get; set; }
+
+        private DateTime _createdAt;
+
+        public DateTime CreatedAt
         {
-          return;
+            get { return _createdAt; }
+            set
+            {
+                if (value.Equals(_createdAt))
+                {
+                    return;
+                }
+                _createdAt = value;
+                OnPropertyChanged();
+            }
         }
-        _createdAt = value;
-        OnPropertyChanged();
-      }
-    }
 
-    private DateTime _modifiedAt;
+        private DateTime _modifiedAt;
 
-    public DateTime ModifiedAt
-    {
-      get { return _modifiedAt; }
-      set
-      {
-        if (value.Equals(_modifiedAt))
+        public DateTime ModifiedAt
         {
-          return;
+            get { return _modifiedAt; }
+            set
+            {
+                if (value.Equals(_modifiedAt))
+                {
+                    return;
+                }
+                _modifiedAt = value;
+                OnPropertyChanged();
+            }
         }
-        _modifiedAt = value;
-        OnPropertyChanged();
-      }
-    }
 
-    private bool _deleted;
+        private bool _deleted;
 
-    public bool Deleted
-    {
-      get { return _deleted; }
-      set
-      {
-        if (value.Equals(_deleted))
+        public bool Deleted
         {
-          return;
+            get { return _deleted; }
+            set
+            {
+                if (value.Equals(_deleted))
+                {
+                    return;
+                }
+                _deleted = value;
+                OnPropertyChanged();
+            }
         }
-        _deleted = value;
-        OnPropertyChanged();
-      }
-    }
 
-    private bool _updated;
+        private bool _updated;
 
-    public bool Updated
-    {
-      get { return _updated; }
-      set
-      {
-        if (value.Equals(_updated))
+        public bool Updated
         {
-          return;
+            get { return _updated; }
+            set
+            {
+                if (value.Equals(_updated))
+                {
+                    return;
+                }
+                _updated = value;
+                OnPropertyChanged();
+            }
         }
-        _updated = value;
-        OnPropertyChanged();
-      }
-    }
 
-    private bool _NewEntry;
+        private bool _NewEntry;
 
-    public bool NewEntry
-    {
-      get { return _NewEntry; }
-      set
-      {
-        if (value.Equals(_NewEntry))
+        public bool NewEntry
         {
-          return;
+            get { return _NewEntry; }
+            set
+            {
+                if (value.Equals(_NewEntry))
+                {
+                    return;
+                }
+                _NewEntry = value;
+                OnPropertyChanged();
+            }
         }
-        _NewEntry = value;
-        OnPropertyChanged();
-      }
-    }
 
 
-    public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-      var handler = PropertyChanged;
-      handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            handler?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-    public Entity()
-    {
-      CreatedAt = DateTime.Now;
-      ModifiedAt = DateTime.Now;
+        public Entity()
+        {
+            CreatedAt = DateTime.Now;
+            ModifiedAt = DateTime.Now;
+        }
     }
-  }
 }
