@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.3" package="www.inspectionapp.com.inspectionapp" android:versionCode="1">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.4" package="www.inspectionapp.com.inspectionapp" android:versionCode="1">
 	<uses-sdk android:minSdkVersion="19" android:targetSdkVersion="28" />
 	<application android:label="Inspection" android:icon="@drawable/inspectionlogo1"></application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

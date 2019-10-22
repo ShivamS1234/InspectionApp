@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using InspectionApp.ViewModel;
 using Xamarin.Forms;
 
 namespace InspectionApp.View
@@ -12,5 +12,12 @@ namespace InspectionApp.View
       InitializeComponent();
       NavigationPage.SetHasNavigationBar(this, false);
     }
+
+    //protected override void OnAppearing()
+    //{
+    //  base.OnAppearing();
+    //  var data = this.BindingContext as DashBoardViewModel;
+
+    //}
   }
 }
